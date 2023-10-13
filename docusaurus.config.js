@@ -104,7 +104,7 @@ const config = {
             position: "left",
           },
           {
-            to: "/docs/Paid Scripts/intro",
+            to: "/docs/intro",
             position: "left",
             label: "Docs",
           },
