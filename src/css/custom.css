@@ -1,0 +1,482 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+@tailwind utilities;
+@tailwind components;
+@tailwind base;
+
+nav.navbar,
+nav > .navbar-sidebar > .navbar-sidebar__brand {
+  background-image: linear-gradient(#000000, rgba(255, 255, 255, 0)),
+    linear-gradient(138deg, #530481, rgba(255, 255, 255, 0)),
+    linear-gradient(
+      177deg,
+      rgba(109, 103, 114, 0.28) 15%,
+      rgba(255, 255, 255, 0)
+    );
+  @apply bg-black;
+}
+
+nav > .navbar__inner > .navbar__items > .navbar__brand {
+  @apply lg:relative absolute lg:transform-none lg:left-auto transform -translate-x-1/2 left-1/2;
+}
+
+.navbar__inner > .navbar__items > .navbar__item.navbar__link,
+.navbar__item.dropdown > .navbar__link {
+  @apply text-white lg:flex hidden whitespace-nowrap hover:text-[var(--ifm-navbar-link-hover-color)]  relative lg:mx-1;
+}
+
+.navbar__link--active {
+  @apply !text-[var(--ifm-color-primary)];
+}
+
+.navbar__inner > .navbar__items > .navbar__item.navbar__link::after {
+  @apply content-[""] absolute -bottom-[14px] left-0 w-full h-0 transition-all duration-300 ease-in-out;
+  /* make a gradiant background from bottom from #B739FE to transparent dark  */
+  background-image: linear-gradient(to top, #b639fed7, rgba(0, 0, 0, 0));
+}
+
+.navbar__inner > .navbar__items > .navbar__item.navbar__link:hover::after {
+  @apply h-3;
+}
+
+.navbar__link {
+  @apply flex flex-row items-center;
+}
+.navbar__item.navbar__link > svg {
+  @apply hidden;
+}
+.navbar__item.dropdown > .navbar__link > svg {
+  @apply mt-1;
+}
+.navbar__item.dropdown > .navbar__link::after {
+  @apply mt-2 ml-2;
+}
+
+/* DOC SEARCH BUTTON */
+.DocSearch.DocSearch-Button {
+  @apply w-fit md:w-44 rounded-xl;
+  box-shadow: inset 0 0 0 1px var(--ifm-color-primary);
+}
+.DocSearch-Button-Keys {
+  @apply !hidden;
+}
+
+/* THEME BUTTON */
+.toggleButton_node_modules-\@docusaurus-theme-classic-lib-theme-ColorModeToggle-styles-module
+  > svg,
+.toggleButton_gllP > svg {
+  @apply text-gray-300;
+}
+.toggleButton_node_modules-\@docusaurus-theme-classic-lib-theme-ColorModeToggle-styles-module:hover,
+.toggleButton_gllP:hover {
+  background: #444950 !important;
+}
+
+/* CLOSE SIDEBAR BTN */
+
+.clean-btn.navbar-sidebar__close {
+  @apply !ml-auto;
+}
+
+/* SIDEBAR LIST */
+.clean-btn.navbar-sidebar__close {
+  @apply text-white ml-0;
+}
+nav
+  > .navbar-sidebar
+  > .navbar-sidebar__brand
+  > .toggle_node_modules-\@docusaurus-theme-classic-lib-theme-ColorModeToggle-styles-module,
+nav > .navbar-sidebar > .navbar-sidebar__brand > .toggle_vylO {
+  @apply !mr-auto;
+}
+nav
+  > .navbar-sidebar
+  > .navbar-sidebar__brand
+  > .navbar-sidebar__item.menu
+  > ul.menu__list {
+  @apply space-y-2;
+}
+.navbar-sidebar__item.menu > ul.menu__list > li.menu__list-item > a {
+  @apply py-3;
+}
+.navbar-sidebar__item.menu > ul.menu__list > li.menu__list-item > a > svg {
+  @apply hidden;
+}
+.navbar-sidebar__item.menu > ul.menu__list > li.menu__list-item > a:hover {
+  @apply bg-[var(--ifm-color-primary)] text-white;
+}
+
+/* SIDEBAR TOGGLE */
+.navbar__toggle.clean-btn {
+  @apply text-white;
+}
+
+/* FOOTER */
+.footer__item > a {
+  @apply flex flex-row space-x-1 items-center whitespace-nowrap;
+}
+footer.footer.footer--dark {
+  @apply bg-[#1C1E21];
+}
+
+/* BREADCRUMBS */
+nav > ul.breadcrumbs,
+nav > ul.breadcrumbs > li {
+  @apply flex flex-row h-full items-center;
+}
+
+nav > ul.breadcrumbs > li:nth-child(1) > a > svg {
+  @apply mb-1;
+}
+.breadcrumbs__item.breadcrumbs__item--active {
+  @apply font-semibold;
+}
+article > div.theme-doc-markdown.markdown > header > h1 {
+  @apply text-3xl font-bold;
+}
+
+/* MARKDOWN */
+main > div > div > header > h1 {
+  @apply text-3xl font-bold;
+}
+
+.container > div > article > section > article > a > p {
+  @apply hidden;
+}
+
+/* LIST */
+
+/* .theme-doc-markdown.markdown > ol {
+  list-style: none;
+  counter-reset: item;
+  padding-top: 12px;
+  padding-right: 16px;
+  padding-left: 16px;
+}
+.theme-doc-markdown.markdown > ol > li {
+  counter-increment: item;
+  margin-bottom: 5px;
+}
+.theme-doc-markdown.markdown > ol > li::before {
+  margin-right: 10px;
+  content: counter(item) " .";
+  width: 1.2em;
+  text-align: center;
+  display: inline-block;
+  font-size: large;
+} */
+
+/* HEADINGS */
+.theme-doc-markdown.markdown > h2 {
+  @apply text-2xl font-bold;
+}
+
+.theme-doc-markdown.markdown > h3 {
+  @apply text-xl font-bold;
+}
+
+.theme-doc-markdown.markdown > h4 {
+  @apply text-lg font-bold;
+}
+
+.theme-doc-markdown.markdown a {
+  @apply text-[var(--ifm-color-primary)] underline;
+}
+
+.theme-doc-markdown.markdown {
+  @apply lg:px-5;
+}
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #2e8555;
+  --ifm-color-primary-dark: #29784c;
+  --ifm-color-primary-darker: #277148;
+  --ifm-color-primary-darkest: #205d3b;
+  --ifm-color-primary-light: #33925d;
+  --ifm-color-primary-lighter: #359962;
+  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme="dark"] {
+  --ifm-color-primary: #648ed3;
+  --ifm-color-primary-dark: #4c7ccc;
+  --ifm-color-primary-darker: #4074c9;
+  --ifm-color-primary-darkest: #305eaa;
+  --ifm-color-primary-light: #7ca0da;
+  --ifm-color-primary-lighter: #88a8dd;
+  --ifm-color-primary-lightest: #adc3e8;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* prefilght */
+
+/*
+1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
+2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
+*/
+
+*,
+::before,
+::after {
+  box-sizing: border-box; /* 1 */
+  border-width: 0; /* 2 */
+  border-style: solid; /* 2 */
+  border-color: theme("borderColor.DEFAULT", currentColor); /* 2 */
+}
+
+::before,
+::after {
+  --tw-content: "";
+}
+
+/*
+1. Use a consistent sensible line-height in all browsers.
+2. Prevent adjustments of font size after orientation changes in iOS.
+3. Use a more readable tab size.
+4. Use the user's configured `sans` font-family by default.
+*/
+
+html {
+  line-height: 1.5; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -moz-tab-size: 4; /* 3 */
+  tab-size: 4; /* 3 */
+  font-family: theme(
+    "fontFamily.sans",
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    "Noto Sans",
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    "Noto Color Emoji"
+  ); /* 4 */
+}
+
+/*
+1. Remove the margin in all browsers.
+2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
+*/
+
+body {
+  margin: 0; /* 1 */
+  line-height: inherit; /* 2 */
+}
+
+/*
+1. Add the correct height in Firefox.
+2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
+3. Ensure horizontal rules are visible by default.
+*/
+
+/*
+Add the correct text decoration in Chrome, Edge, and Safari.
+*/
+
+abbr:where([title]) {
+  text-decoration: underline dotted;
+}
+
+/*
+Remove the default font size and weight for headings.
+*/
+
+/*
+Reset links to optimize for opt-in styling instead of opt-out.
+*/
+
+/*
+Add the correct font weight in Edge and Safari.
+*/
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+/*
+1. Use the user's configured `mono` font family by default.
+2. Correct the odd `em` font sizing in all browsers.
+*/
+
+/*
+Add the correct font size in all browsers.
+*/
+
+/*
+Prevent `sub` and `sup` elements from affecting the line height in all browsers.
+*/
+
+/*
+1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
+2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
+3. Remove gaps between table borders by default.
+*/
+
+/*
+1. Change the font styles in all browsers.
+2. Remove the margin in Firefox and Safari.
+3. Remove default padding in all browsers.
+*/
+
+/*
+Remove the inheritance of text transform in Edge and Firefox.
+*/
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Remove default button styles.
+*/
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button; /* 1 */
+  background-color: transparent; /* 2 */
+  background-image: none; /* 2 */
+}
+
+/*
+Use the modern Firefox focus style for all focusable elements.
+*/
+
+:-moz-focusring {
+  outline: auto;
+}
+
+/*
+Remove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)
+*/
+
+:-moz-ui-invalid {
+  box-shadow: none;
+}
+
+/*
+Add the correct vertical alignment in Chrome and Firefox.
+*/
+
+progress {
+  vertical-align: baseline;
+}
+
+/*
+Correct the cursor style of increment and decrement buttons in Safari.
+*/
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/*
+1. Correct the odd appearance in Chrome and Safari.
+2. Correct the outline style in Safari.
+*/
+
+[type="search"] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
+/*
+Remove the inner padding in Chrome and Safari on macOS.
+*/
+
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Change font properties to `inherit` in Safari.
+*/
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/*
+Add the correct display in Chrome and Safari.
+*/
+
+summary {
+  display: list-item;
+}
+
+/*
+Removes the default spacing and border for appropriate elements.
+*/
+
+/* ol,
+ul,
+menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+} */
+
+/*
+Prevent resizing textareas horizontally by default.
+*/
+
+textarea {
+  resize: vertical;
+}
+
+/*
+1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)
+2. Set the default placeholder color to the user's configured gray 400 color.
+*/
+
+/*
+Set the default cursor for buttons.
+*/
+
+/*
+Make sure disabled buttons don't get the pointer cursor.
+*/
+:disabled {
+  cursor: default;
+}
+
+/*
+1. Make replaced elements `display: block` by default. (https://github.com/mozdevs/cssremedy/issues/14)
+2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)
+   This can trigger a poorly considered lint error in some tools but is included by design.
+*/
+
+/*
+Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)
+*/
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/*
+Ensure the default browser behavior of the `hidden` attribute.
+*/
+
+[hidden] {
+  display: none;
+}

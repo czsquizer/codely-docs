@@ -1,0 +1,92 @@
+---
+sidebar_position: 8
+---
+
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+```
+
+:::info Introduction
+Script for displaying and selling your vehicles to offline players. Display your vehicle, wait for the buyer and then get your money :)
+:::
+
+## Get it now!
+
+```mdx-code-block
+<div
+style={{
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "row"
+}}
+>
+
+<a style={{
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "column",
+    margin: "0 12px"
+}} href="https://forum.cfx.re/t/showrooms-display-and-sell-your-vehicles/4837212" target="_blank"> <img src="/img/fivem.png" alt="FIVEM ICON" style={{
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+}} />FiveM Post</a>
+
+<a style={{
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "column",
+    margin: "0 12px"
+}} href="https://sqz.tebex.io/package/5051777" target="_blank"> <img src="/img/tabex.webp" alt="TABEX ICON" style={{
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+}} />Tabex Store</a>
+
+<a style={{
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "column",
+    margin: "0 12px"
+}} href="https://youtu.be/QFJfviLQzms" target="_blank">
+<img src="/img/ytb.webp" alt="YOUTUBE ICON" style={{
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+}} />
+Youtube Showcase</a>
+
+</div>
+
+
+```
+
+## Installation
+
+1. Put `ensure sqz_showrooms` to your start config and resource called `sqz_showrooms` into your resources folder
+2. Configure config.lua & locales.lua
+3. Run the provided SQL file (sql.sql)
+
+## Common Issues
+
+- I can not see any vehicles when trying to display the vehicle
+
+  - In configs/server_edit.lua change the latest event for this one:
+
+    ```js
+    RegisterNetEvent('sqz_carshowroom:RequestCars', function()
+        local xPlayer = ESX.GetPlayerFromId(source)
+        if Config.JobsAllowedToDisplay[xPlayer.job.name] then
+            local vehicles = MySQL.Sync.fetchAll('SELECT vehicle FROM owned_vehicles WHERE owner = @owner AND stored = 1', {
+                ['@owner'] = xPlayer.identifier
+            })
+            TriggerClientEvent('sqz_carshowroom:OpenVehicleChooseMenu', xPlayer.source, vehicles)
+        end
+    end)
+    ```
