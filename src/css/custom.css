@@ -148,6 +148,10 @@ main > div > div > header > h1 {
   @apply hidden;
 }
 
+.cst-card-p:hover > p {
+  @apply transform transition bg-[#a349d7] duration-300 ease-in-out;
+}
+
 /* LIST */
 
 /* .theme-doc-markdown.markdown > ol {
