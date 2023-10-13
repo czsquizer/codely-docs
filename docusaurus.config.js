@@ -39,7 +39,8 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
-          routeBasePath: "/paid-scripts",
+          path: "./docs",
+          // routeBasePath: "/paid-scripts",
 
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
@@ -103,10 +104,9 @@ const config = {
             position: "left",
           },
           {
-            type: "docSidebar",
-            sidebarId: "tutorialSidebar",
+            to: "/docs/Paid Scripts/intro",
             position: "left",
-            label: "Paid Scripts",
+            label: "Docs",
           },
           {
             href: "https://discord.gg/6ZUwSyUnbq",
