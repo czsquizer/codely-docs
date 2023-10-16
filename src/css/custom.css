@@ -11,7 +11,7 @@
 nav.navbar,
 nav > .navbar-sidebar > .navbar-sidebar__brand {
   background-image: linear-gradient(#000000, rgba(255, 255, 255, 0)),
-    linear-gradient(138deg, #530481, rgba(255, 255, 255, 0)),
+    linear-gradient(138deg, #812104, rgba(255, 255, 255, 0)),
     linear-gradient(
       177deg,
       rgba(109, 103, 114, 0.28) 15%,
@@ -36,7 +36,7 @@ nav > .navbar__inner > .navbar__items > .navbar__brand {
 .navbar__inner > .navbar__items > .navbar__item.navbar__link::after {
   @apply content-[""] absolute -bottom-[14px] left-0 w-full h-0 transition-all duration-300 ease-in-out;
   /* make a gradiant background from bottom from #B739FE to transparent dark  */
-  background-image: linear-gradient(to top, #b639fed7, rgba(0, 0, 0, 0));
+  background-image: linear-gradient(to top, #fe3939d7, rgba(0, 0, 0, 0));
 }
 
 .navbar__inner > .navbar__items > .navbar__item.navbar__link:hover::after {
@@ -149,7 +149,7 @@ main > div > div > header > h1 {
 }
 
 .cst-card-p:hover > p {
-  @apply transform transition bg-[#a349d7] duration-300 ease-in-out;
+  @apply transform transition bg-[#d75a49] duration-300 ease-in-out;
 }
 
 /* LIST */
@@ -210,13 +210,13 @@ main > div > div > header > h1 {
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme="dark"] {
-  --ifm-color-primary: #648ed3;
-  --ifm-color-primary-dark: #4c7ccc;
-  --ifm-color-primary-darker: #4074c9;
-  --ifm-color-primary-darkest: #305eaa;
-  --ifm-color-primary-light: #7ca0da;
-  --ifm-color-primary-lighter: #88a8dd;
-  --ifm-color-primary-lightest: #adc3e8;
+  --ifm-color-primary: #d75a49;
+  --ifm-color-primary-dark: #d24531;
+  --ifm-color-primary-darker: #c93f2c;
+  --ifm-color-primary-darkest: #a53424;
+  --ifm-color-primary-light: #dc6f61;
+  --ifm-color-primary-lighter: #df7a6c;
+  --ifm-color-primary-lightest: #e79a90;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 

@@ -11,7 +11,7 @@ export default function Home() {
         <section>
           <div className="flex flex-row items-start space-x-2">
             <h1>
-              Our <span className="text-[#a349d7]">Partners</span>
+              Our <span className="text-[#d75a49]">Partners</span>
             </h1>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -25,7 +25,7 @@ export default function Home() {
               </defs>
               <g clip-path="url(#a)" transform="matrix(1.25 0 0 -1.25 0 47.5)">
                 <path
-                  fill="#a349d7"
+                  fill="#d75a49"
                   d="M36.885 25.166c0 5.45-4.418 9.868-9.867 9.868-3.308 0-6.227-1.633-8.018-4.129-1.79 2.496-4.71 4.129-8.017 4.129-5.45 0-9.868-4.418-9.868-9.868 0-.772.098-1.52.266-2.241C2.752 14.413 12.216 5.431 19 2.965c6.783 2.466 16.249 11.448 17.617 19.96.17.721.268 1.469.268 2.241"></path>
               </g>
             </svg>
@@ -43,11 +43,11 @@ function Header() {
       <div>
         <h1 className="text-6xl leading-[1.2] mb-7">
           <span>Hi, I'm </span>
-          <span className="text-[#a349d7]">Nikola</span>
+          <span className="text-[#d75a49]">Nikola</span>
           <span className="text-secondary">,</span>
           <br />
           <span>Enjoy Using </span>
-          <span className="text-[#a349d7]">Codely</span>
+          <span className="text-[#d75a49]">Codely</span>
           <span className="text-secondary">.</span>
         </h1>
         <Typing />
@@ -97,7 +97,7 @@ function Partners() {
           target="_blank"
           key={partner.title}>
           <div
-            className="border cst-card-p border-gray-300 hover:border-[#a349d7] rounded-2xl py-6 px-8
+            className="border cst-card-p border-gray-300 hover:border-[#d75a49] rounded-2xl py-6 px-8
             transform transition duration-300 flex flex-col items-center justify-center
             ">
             <img
