@@ -45,6 +45,7 @@ export default function NavbarMobilePrimaryMenu() {
         <NavbarItem
           mobile
           {...item}
+          label={item.label == "Docs" ? "Paid Scripts" : item.label}
           onClick={() => mobileSidebar.toggle()}
           key={i}
         />
