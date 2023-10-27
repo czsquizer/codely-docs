@@ -41,7 +41,7 @@ function Header() {
   return (
     <header className="lg:px-16 grid grid-cols-1 md:grid-cols-2 md:px-12 px-6 py-24">
       <div>
-        <h1 className="text-6xl leading-[1.2] mb-7">
+        <h1 className="text-4xl md:text-6xl leading-[1.2] mb-7">
           <span>Hi, I'm </span>
           <span className="text-[#d75a49]">Nikola</span>
           <span className="text-secondary">,</span>
@@ -50,7 +50,9 @@ function Header() {
           <span className="text-[#d75a49]">Codely</span>
           <span className="text-secondary">.</span>
         </h1>
-        <Typing />
+        <div className="md:flex hidden">
+          <Typing />
+        </div>
       </div>
       <div>
         <img
@@ -58,6 +60,9 @@ function Header() {
           alt="gaming"
           className="object-contain rounded-3xl"
         />
+      </div>
+      <div className="flex md:hidden">
+        <Typing />
       </div>
     </header>
   );

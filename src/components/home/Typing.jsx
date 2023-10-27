@@ -3,11 +3,11 @@ import { TypeAnimation } from "react-type-animation";
 
 const Typing = () => {
   return (
-    <div className="flex flex-row items-center space-x-2">
+    <div className="flex flex-row my-5 items-center space-x-2">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         enable-background="new 0 0 24 24"
-        className="w-7 h-7 fill-white"
+        className="md:w-7 md:h-7 w-5 h-5  fill-white"
         viewBox="0 0 24 24"
         id="terminal">
         <g>
@@ -35,7 +35,7 @@ const Typing = () => {
           1000,
         ]}
         speed={50}
-        style={{ fontSize: "20px" }}
+        className="text-sm md:text-xl"
         repeat={Infinity}
       />
     </div>
