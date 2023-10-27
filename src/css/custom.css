@@ -110,6 +110,17 @@ nav
   @apply bg-[var(--ifm-color-primary)] text-white;
 }
 
+ul > li > a.menu__link,
+.menu__list-item-collapsible > a.menu__link {
+  @apply py-3 cursor-pointer;
+}
+ul > li > a.menu__link > svg {
+  @apply hidden;
+}
+ul > li > a.menu__link:hover {
+  @apply bg-[var(--ifm-color-primary)] text-white;
+}
+
 /* SIDEBAR TOGGLE */
 .navbar__toggle.clean-btn {
   @apply text-white;
@@ -193,6 +204,27 @@ main > div > div > header > h1 {
 
 .theme-doc-markdown.markdown {
   @apply lg:px-5;
+}
+
+.cst-after-link::after {
+  transform: rotateZ(180deg) !important;
+}
+.cst-after-link-not::after {
+  transform: rotateZ(90deg) !important;
+}
+
+.cst-list {
+  transition: height 500ms ease-in-out 0s;
+  will-change: height;
+  height: 0px;
+  display: none;
+  overflow: hidden;
+}
+
+.list-open {
+  display: block !important;
+  overflow: visible !important;
+  height: auto !important;
 }
 
 /* You can override the default Infima variables here. */
