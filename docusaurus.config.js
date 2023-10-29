@@ -79,9 +79,9 @@ const config = {
         disableSwitch: true,
       },
       algolia: {
-        apiKey: "YOUR_API_KEY",
-        indexName: "YOUR_INDEX_NAME",
-        appId: "YOUR_APP_ID",
+        apiKey: "650c352d884796c701e147e6c1ab908a",
+        indexName: "prod_codely",
+        appId: "OXDTAUQ7E8",
       },
       // Replace with your project's social card
       image: "img/docusaurus-social-card.jpg",
