@@ -76,6 +76,11 @@ Youtube Showcase</a>
 5. Download the dependencies: mhacking, progressBars, utk_fingerprint
    Config Files
 
+## Dependencies
+- [mhacking](https://github.com/qbcore-framework/mhacking)
+- [utk_fingerprint & utk_hackdependency](https://github.com/utkuali/Finger-Print-Hacking-Game)
+- [progressBars](https://github.com/EthanPeacock/progressBars) *OPTIONAL: Can be replaced in client edit files*   
+
 ## Config Files
 
 ```mdx-code-block
@@ -84,7 +89,7 @@ Youtube Showcase</a>
   <TabItem value="config" label="config" default>
 ```
 
-```js
+```lua
 Config = {}
 --=================================================--
 --===================MAIN PART=====================--
@@ -775,7 +780,7 @@ Config.Dispatch = {
 <TabItem value="locales" label="locales">
 ```
 
-```js
+```lua
 Locales['en'] = {
     ['not_armed'] = 'You are not armed, how do you want to open the cash register?',
     ['e_to_rob_vault'] = 'Press [~g~E~s~] to rob this vault',
@@ -817,6 +822,381 @@ Locales['en'] = {
     ['not_have_needed_item'] = 'You do not have the required item for breaking to the ATM'
 }
 ```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="Client Edit File" label="Client Edit File">
+```
+
+```lua
+if Config.ESXVersion == 'old' then
+	Citizen.CreateThread(function()
+		while ESX == nil do
+			TriggerEvent(Config.CustomEvents['esx:getSharedObject'], function(obj) ESX = obj end)
+			Citizen.Wait(0)
+		end
+	end)
+elseif Config.ESXVersion == 'legacy' then
+	ESX = exports["es_extended"]:getSharedObject()
+end
+
+-- ############# VARIABLES #############
+ATMModels = {
+    [GetHashKey('prop_atm_01')] = true,
+    [GetHashKey('prop_fleeca_atm')] = true,
+    [GetHashKey('prop_atm_02')] = true,
+    [GetHashKey('prop_atm_03')] = true,
+}
+
+
+function ShowNotification(msg)
+    ESX.ShowNotification(msg)
+end
+
+function ATMRobFailed(coords)
+    Citizen.CreateThread(function()
+        FreezeEntityPosition(ped, true)
+        while true do
+            Wait(0)
+            DrawScreenText(_U('get_to_atm_force'), 0.4, 0.4)
+            DrawScreenText(_U('atm_yes'), 0.4, 0.43)
+            DrawScreenText(_U('atm_no'), 0.4, 0.46)
+
+            if IsControlJustPressed(0, 74) then
+                TriggerServerEvent('sqz_robbery:OpenATMUsingForce', coords)
+                return
+            elseif IsControlJustPressed(0, 73) then
+                FreezeEntityPosition(ped, false)
+                TriggerServerEvent('sqz_robbery:vaults:RobberyAborted')
+                isBussy = false
+                return
+            end
+        end
+    end)
+end
+
+function DetonateVault(vaultIndex)
+    Citizen.CreateThread(function()
+        FreezeEntityPosition(ped, true)
+        while true do
+            Wait(0)
+            DrawScreenText(_U('detonate_vault?'), 0.4, 0.4)
+            DrawScreenText(_U('detonate_vault_yes'), 0.4, 0.43)
+            DrawScreenText(_U('detonate_vault_no'), 0.4, 0.46)
+
+            if IsControlJustPressed(0, 74) then
+                TriggerServerEvent('sqz_robbery:vaults:DetonateRequest', vaultIndex)
+                return
+            elseif IsControlJustPressed(0, 73) then
+                FreezeEntityPosition(ped, false)
+                currentlyRobbing = false
+                isBussy = false
+                TriggerServerEvent('sqz_robbery:vaults:RobberyAborted')
+                ShowNotification(_U('robbery_aborted'))
+                return
+            end
+        end
+    end)
+end
+
+function Draw3DText(x, y, z, text, lineCount)
+	local onScreen,_x,_y=World3dToScreen2d(x,y,z + 0.4)
+	local px,py,pz=table.unpack(GetGameplayCamCoords())
+	
+	SetTextScale(0.5, 0.35)
+	SetTextFont(4)
+	SetTextProportional(1)
+	SetTextColour(255, 255, 255, 215)
+	SetTextEntry("STRING")
+	SetTextCentre(1)
+	AddTextComponentString(text)
+	DrawText(_x,_y)
+	local factor = (string.len(text)) / 200
+	DrawRect(_x,_y+0.0105, 0.003+ factor, 0.03, 0, 0, 0, 200)
+end
+
+function DrawScreenText(text, x, y)
+	SetTextFont(11)
+	SetTextProportional(1)
+	SetTextScale(0.0, 0.4)
+	SetTextDropshadow(1, 0, 0, 0, 255)
+	SetTextEdge(1, 0, 0, 0, 255)
+	SetTextDropShadow()
+	SetTextOutline()
+	SetTextEntry("STRING")
+	AddTextComponentString(text)
+	DrawText(x, y)
+end
+
+function TeleportToHouse(index)
+    local coords = Config.Houses[index].HouseInCoords
+    -- TO DO: Maybe some progress bars
+    TriggerServerEvent('sqz_robbery:house:EnterInstance', index)
+
+    DoScreenFadeOut(100)
+
+    RequestCollisionAtCoord(coords)
+    while not HasCollisionLoadedAroundEntity(PlayerPedId()) do
+        Citizen.Wait(0)
+    end
+
+    Citizen.Wait(750)
+
+    SetEntityCoords(PlayerPedId(), coords)
+
+    DoScreenFadeIn(100)
+
+end
+
+function LeaveHouse(index)
+    local coords = Config.Houses[index].StartPos
+    -- TO DO: Maybe some progress bars
+    TriggerServerEvent('sqz_robbery:house:LeaveInstance', index)
+
+    DoScreenFadeOut(100)
+
+    RequestCollisionAtCoord(coords)
+    while not HasCollisionLoadedAroundEntity(PlayerPedId()) do
+        Citizen.Wait(0)
+    end
+
+    Citizen.Wait(750)
+
+    SetEntityCoords(PlayerPedId(), coords)
+
+    DoScreenFadeIn(100)
+
+end
+
+function CanPedBreakCashRegister(playerPed)
+    if IsPedArmed(playerPed, 4) or IsPedArmed(playerPed, 1) then
+        return true
+    end
+    return false
+end
+
+RegisterNetEvent('sqz_robbery:TransmitDispatch', function(type, coords)
+    if GetResourceState('cd_dispatch') == 'started' then
+        if type == 'vaults' then
+            local data = exports['cd_dispatch']:GetPlayerInfo()
+            TriggerServerEvent('cd_dispatch:AddNotification', {
+                job_table = {'police', 'sheriff'}, 
+                coords = data.coords,
+                title = 'Store Robbery',
+                message = data.sex..' is robbing a store on the street  '..data.street,
+                flash = 0,
+                unique_id = tostring(math.random(0000000,9999999)),
+                blip = {
+                    sprite = 527, 
+                    scale = 0.9, 
+                    colour = 1,
+                    flashes = false, 
+                    text = "911 - Store Robbery",
+                    time = (5*60*1000),
+                    sound = 1,
+                }
+            })	
+        elseif type == 'cashRobberies' then
+            local data = exports['cd_dispatch']:GetPlayerInfo()
+            TriggerServerEvent('cd_dispatch:AddNotification', {
+                job_table = {'police', 'sheriff'}, 
+                coords = data.coords,
+                title = 'Cash Register Stolen',
+                message = data.sex..' someone has stolen a cash register in the street '..data.street,
+                flash = 0,
+                unique_id = tostring(math.random(0000000,9999999)),
+                blip = {
+                    sprite = 497, 
+                    scale = 0.9, 
+                    colour = 1,
+                    flashes = false, 
+                    text = "911 - Cash Register Stolen",
+                    time = (5*60*1000),
+                    sound = 1,
+                }
+            })	
+        elseif type == 'houses' then
+            local data = exports['cd_dispatch']:GetPlayerInfo()
+            TriggerServerEvent('cd_dispatch:AddNotification', {
+                job_table = {'police', 'sheriff'}, 
+                coords = data.coords,
+                title = 'House Burglary',
+                message = data.sex..' someone has breached to a hous on the street '..data.street,
+                flash = 0,
+                unique_id = tostring(math.random(0000000,9999999)),
+                blip = {
+                    sprite = 449231, 
+                    scale = 0.9, 
+                    colour = 1,
+                    flashes = false, 
+                    text = "House Burglary",
+                    time = (5*60*1000),
+                    sound = 1,
+                }
+            })	
+        elseif type == 'atms' then
+            local data = exports['cd_dispatch']:GetPlayerInfo()
+            TriggerServerEvent('cd_dispatch:AddNotification', {
+                job_table = {'police', 'sheriff'}, 
+                coords = data.coords,
+                title = 'ATM Software Failure',
+                message = 'The security systems of ATM on the street '..data.street.. ' have failed',
+                flash = 0,
+                unique_id = tostring(math.random(0000000,9999999)),
+                blip = {
+                    sprite = 521, 
+                    scale = 0.9, 
+                    colour = 1,
+                    flashes = false, 
+                    text = "ATM software Failure",
+                    time = (5*60*1000),
+                    sound = 1,
+                }
+            })	
+        elseif type == 'vangelico' then
+            local data = exports['cd_dispatch']:GetPlayerInfo()
+            TriggerServerEvent('cd_dispatch:AddNotification', {
+                job_table = {'police', 'sheriff'}, 
+                coords = data.coords,
+                title = 'Jewelery Robbery',
+                message = data.sex..' is robbing a jewelery on the street '..data.street,
+                flash = 0,
+                unique_id = tostring(math.random(0000000,9999999)),
+                blip = {
+                    sprite = 617, 
+                    scale = 0.9, 
+                    colour = 1,
+                    flashes = false, 
+                    text = "Jewelery Robbery",
+                    time = (5*60*1000),
+                    sound = 1,
+                }
+            })	
+        end
+    elseif GetResourceState('linden_outlawalert') == 'started' then
+        local data = {dispatchCode = 'shooting', caller = 'Someone is robbing', coords = coords, netId = NetworkGetNetworkIdFromEntity(PlayerPedId()), length = 4000}
+        TriggerServerEvent('wf-alerts:svNotify', data)
+    else
+        TriggerServerEvent('sqz_robbery:dispatch:RequestDispatch', type, coords)
+    end
+end)
+
+RegisterNetEvent('sqz_robbery:dispatch:BrodcastDispatch')
+AddEventHandler('sqz_robbery:dispatch:BrodcastDispatch', function(type, coords, player)
+    if not Config.PoliceJobNames[ESX.PlayerData.job.name] then
+        return
+    end
+
+    if GetPlayerFromServerId(player) ~= -1 then
+        local mugshot, mugshotStr = ESX.Game.GetPedMugshot(GetPlayerPed(GetPlayerFromServerId(player)))
+        ESX.ShowAdvancedNotification('Camera', 'This person has been cought on the camera!', 'There is a photo of the person that has been caught on the camera with the last report.', mugshotStr, 1)
+        UnregisterPedheadshot(mugshot)
+    end
+
+    local dP = Config.Dispatch[type]
+    ShowNotification(dP.Notification)
+
+    local blip = AddBlipForCoord(coords)
+    SetBlipDisplay(blip, 4)
+    SetBlipHighDetail(blip, true)
+    SetBlipColour(blip, dP.BlipColour)
+    SetBlipSprite(blip, dP.BlipSprite)
+    SetBlipFlashes(blip, dP.BlipFlashes)
+    BeginTextCommandSetBlipName('STRING')
+    AddTextComponentSubstringPlayerName(dP.BlipName)
+    EndTextCommandSetBlipName(blip)
+
+    SetTimeout(dP.BlipTimeout, function()
+        
+        RemoveBlip(blip)
+    
+    end)
+end)
+
+RegisterNetEvent('sqz_robbery:StartBreakingIntoAtm')
+AddEventHandler('sqz_robbery:StartBreakingIntoAtm', function(coords)
+    RobberyStarted('atm')
+    local ped = PlayerPedId()
+    TaskStartScenarioInPlace(ped, 'WORLD_HUMAN_STAND_MOBILE', 0, true)
+    Wait(1200)
+    TriggerEvent('sqz_robbery:TransmitDispatch', 'atms', GetEntityCoords(ped))
+    TriggerEvent("utk_fingerprint:Start", 4, 6, 2, function(success, reason)
+        ClearPedTasks(ped)
+        if success == true then
+            TriggerServerEvent('sqz_robbery:ATMRobbedSuccessfuly', coords)
+        elseif success == false then
+            ShowNotification(_U('atm_rob_failed'))
+            ATMRobFailed(coords)
+        end
+    end)
+end)
+
+function RobberyStarted(type)
+ -- type: atm/cashRegister/house/vangelico/vaultPin/vaultCode
+end
+
+function startProgress(lenghth, label)
+    exports['progressBars']:startUI(lenghth, label)
+end
+
+function LockObject(locking)
+    -- if locking == true then he is locking the object
+    if locking then
+        startProgress(5000, 'Locking the object')
+    else
+        startProgress(5000, 'Unlocking the object')
+    end
+    RequestAnimDict('mp_arresting')
+    while not HasAnimDictLoaded('mp_arresting') do Wait(10) end
+    TaskPlayAnim(PlayerPedId(), 'mp_arresting', 'a_uncuff', 8.0, -8, -1, 49, 0, 0, 0, 0)
+    SetTimeout(5000, function()
+        ClearPedTasks(PlayerPedId())
+        isLockingObject = false
+    end)
+end
+
+function BreakIntoSafe(index)
+    local status
+    local vP = Config.Vaults[index]
+    if vP.Type == 'code' then
+        TriggerEvent("mhacking:show")
+        TriggerEvent("mhacking:start",7,35,function(success)
+            TriggerEvent('mhacking:hide')
+            status = success
+        end)
+    elseif vP.Type == 'lock' then
+        return createSafe({math.random(0, 2), math.random(0, 2), math.random(0, 2), math.random(0, 2)})
+    end
+
+    while status == nil do Wait(200) end
+    return status
+end
+
+local itemNames = {}
+RegisterNetEvent('sqz_robbery:ReceiveItemList', function(data)
+    itemNames = data
+end)
+
+function GetItemNameByItem(itemName)
+    if itemNames[itemName] then
+        return itemNames[itemName]
+    else
+        return itemName
+    end
+end
+
+--[[local index = 18 -- Only used for tests of correct bomb position
+local bomba = CreateObject(GetHashKey("h4_prop_h4_ld_bomb_01a"), Config.Vaults[index].BombAnimation.BombPos,  true,  true, true)
+while not DoesEntityExist(bomba) do
+    Wait(10)
+end
+SetEntityCollision(bomba, false, true)
+DetachEntity(bomba, 1, 1)
+FreezeEntityPosition(bomba, true)
+SetEntityCoords(bomba, Config.Vaults[index].BombAnimation.BombPos)
+SetEntityHeading(bomba, Config.Vaults[index].BombAnimation.Heading)]]
+```
+
 
 ```mdx-code-block
 

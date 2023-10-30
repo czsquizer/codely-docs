@@ -80,7 +80,7 @@ Youtube Showcase</a>
 3. The 2 props can be changed as the plant grows -> It can change its prop after the process status
 4. RewardItemCount is count of item you will receive if the status and quality are 100%
 
-```js
+```lua
     [1] = {
 
         PlantLocation = {
@@ -177,7 +177,7 @@ Youtube Showcase</a>
 2. In the zones, there are 2 types: Collect/Process, you can add them as much as you want to, just change the table index, type is specified in the `Action`
 3. Make sure you have all the items in your databases, maily the one in 1. step, `GiveItem` and the items from `RequiredItems`
 
-```js
+```lua
 Config.Drugs.joint = { -- Make sure that the drug name is in lower, otherwise it will not work
     Zones = {
         Collect = {
@@ -264,7 +264,7 @@ With this part you will be able to type: `/sellItem [itemName] [itemCount]` and 
 2. Change the index, it is the name of the sold item (now it is marijuana )
 3. Change all the properties of the item
 
-```js
+```lua
     marijuana = {
         GiveBlack = true, -- If true, player will get "black_money" account
         MinimalGiveMoney = 200, -- The minimal amount of money a player will receive after selling drugs
@@ -325,7 +325,7 @@ With this part you will be able to sell drugs using car and delivering drugs (it
 3. Configure all the properties as you want to
 4. Make sure all the items are in the database
 
-```js
+```lua
     {
         Locations = {
             {
@@ -382,7 +382,7 @@ Again you can add as many blackshops as you want to. Here you will be able
 2. Configure the shop items. If it is weapon and you wanna add it as `xPlayer.addWeapon` , make sure you set `weapon = true`
 3. Make sure all the items are in the database.
 
-```js
+```lua
     {
         Location = vector3(1390.0927,1162.0493,114.3345),
         -- Markers
@@ -419,7 +419,7 @@ This is for selling items just by clicking items in the menu, there is one simpl
 2. Change the item properties, if it is weapon or not (if it is weapon, it is check if `xPlayer.hasWeapon`, not if `xPlayer.getInventoryItem`)
 3. Set all the other parts to whatever you want to.
 
-```js
+```lua
     {
         Location = vector3(-1101.5736,4940.8838,218.354),
         -- Markers
@@ -456,7 +456,7 @@ This is for selling items just by clicking items in the menu, there is one simpl
   <TabItem value="client_edit" label="client_edit" default>
 ```
 
-```js
+```lua
 Citizen.CreateThread(function()
 	while ESX == nil do
 		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end) -- Change this event in case you are yousing custom ESX events
@@ -526,7 +526,7 @@ end
 <TabItem value="server_edit" label="server_edit">
 ```
 
-```js
+```lua
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end) -- Change the event if you are using any other event for getting ESX (if you have changed events for example)
 
 function debugMessage(message)
@@ -607,7 +607,7 @@ end)
 <TabItem value="config_c" label="config_c" >
 ```
 
-```js
+```lua
 Config = {}
 
 Config.Locale = 'en' -- Language you want to use (defined in locales folder) [cs/en/es]
@@ -1134,7 +1134,7 @@ Config.SellPointsString = "~INPUT_PICKUP~ Open Sell Point"
 <TabItem value="config_s" label="config_s" >
 ```
 
-```js
+```lua
 SConfig = {}
 SConfig.WebHookDiscord = "Discord_Webhook_URLS" -- The Discord webhook you want to send informations to, remove this line if you do not want to send informations to Discord
 ```
@@ -1145,7 +1145,7 @@ SConfig.WebHookDiscord = "Discord_Webhook_URLS" -- The Discord webhook you want 
 
 ```
 
-```js
+```lua
 Locales['en'] = {
     ['max_weed_plants_reached'] = 'You have reached maximal number of weed plants every user can plant.',
     ['too_close_to_plant'] = 'You are too close to another plant.',
@@ -1319,7 +1319,7 @@ Locales['es'] = {
   <TabItem value="CarryItem" label="CarryItem" default>
 ```
 
-```js
+```lua
 function CanCarryItem(playerId, item, count)
     local xPlayer = ESX.GetPlayerFromId(playerId)
     local xItem = xPlayer.getInventoryItem(item)
@@ -1336,7 +1336,7 @@ end
 <TabItem value="notification" label="notification">
 ```
 
-```js
+```lua
 function showNotification(playerId, message)
 
     TriggerClientEvent('esx:showNotification', playerId, message)

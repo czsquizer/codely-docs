@@ -103,7 +103,7 @@ You do **NOT NEED** to put the job into the `addon_inventory` or datastore table
   <TabItem value="Config (server)" label="Config (server)" default>
 ```
 
-```js
+```lua
 SConfig = {}
 
 SConfig.Webhooks = {
@@ -116,7 +116,7 @@ SConfig.Webhooks = {
 <TabItem value="Config (client)" label="Config (client)">
 ```
 
-```js
+```lua
 Config                            = {}
 Config.Jobs						  = {}
 
@@ -460,7 +460,7 @@ Config.Jobs.sandy_mechanic = { -- This is name of job you have in your database,
 <TabItem value="Loclaes" label="Loclaes">
 ```
 
-```js
+```lua
 Locales['en'] = {
     ['player_clothes'] = 'Your Clothes',
     ['cloakroom_open'] = '[E] CloakRoom',
@@ -721,7 +721,7 @@ Locales['cs'] = {
   <TabItem value="client_edit" label="client_edit">
 ```
 
-```js
+```lua
 RegisterNetEvent('sqz_unijob:sendClientNotify')
 AddEventHandler('sqz_unijob:sendClientNotify', function(notify_text)
     ESX.ShowNotification(notify_text)
@@ -758,7 +758,7 @@ RegisterKeyMapping('jobactions', 'Job Actions', 'keyboard', 'f6')
 <TabItem value="server_edit" label="server_edit">
 ```
 
-```js
+```lua
 TriggerEvent('esx_phone:registerNumber', 'fib', _U('alert_fib'), true, true) -- Just in case you want to have the job in phone Deffault Contacts
 
 RegisterNetEvent('sqz_unijob:Server:CanPlayerCarryItem')
@@ -806,7 +806,7 @@ end)
   <TabItem value="CarryItem" label="CarryItem" default>
 ```
 
-```js
+```lua
 RegisterNetEvent('sqz_unijob:Server:CanPlayerCarryItem')
 AddEventHandler('sqz_unijob:Server:CanPlayerCarryItem', function(callback, playerId, itemName, count)
   local xPlayer = ESX.GetPlayerFromId(playerId)
@@ -826,7 +826,7 @@ end)
 <TabItem value="notification" label="notification">
 ```
 
-```js
+```lua
 RegisterNetEvent('sqz_unijob:Server:ShowNotification')
 AddEventHandler('sqz_unijob:Server:ShowNotification', function(playerId, message)
 

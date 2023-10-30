@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 ```
 
 :::info Introduction
-Squizer's advanced duty system that allows you to go on/off duty, track your time and log it on Discord and make it accessible in in-game boss menu + automatic job convertion to off duty.
+An Advanced duty system that allows you to check in via command/on certain places and tracks your time in-duty, boss of your society can review your time on-duty.
 :::
 
 ## Get it now!
@@ -75,29 +75,66 @@ Youtube Showcase</a>
 
 ## Optional modifications
 
-1. To add the duty element to your boss menu: _(for ESX)_
+1. To add the duty element to your boss menu:
+```mdx-code-block
+<Tabs>
+  <TabItem value="ESX" label="ESX" default>
+```
 
 _(small snippet [https://pastebin.com/E2PedQtn](https://pastebin.com/E2PedQtn))_
-
+- All the changes are done in client/main.lua
 Change this:
+1. Replace n esx_society/client/main.lua:77 
+    ```lua
+    local elements = {}
+    ```
+    for
+    ```lua
+    local elements = {
+        {label = 'Show Duty Time of employees', value = 'dutyTime'}
+    }
+    ```
 
-```js
-local elements = {} in esx_society/client/main.lua:77 to
-local elements = {
-    {label = 'Show Duty Time of employees', value = 'dutyTime'}
-}
+2. Add the part bellow to line 168 (the end of the if condition)
+
+    ```lua
+    elseif data.current.value == 'dutyTime' then
+        TriggerServerEvent('sqz_duty:GetEmployes', ESX.PlayerData.job.name)
+    ```
+
+
+```mdx-code-block
+</TabItem>
+<TabItem value="QBCore" label="QBCore">
 ```
-
-Add the part bellow to line 168 (the end of the if condition)
-
-```js
-elseif data.current.value == 'dutyTime' then
-    TriggerServerEvent('sqz_duty:GetEmployes', ESX.PlayerData.job.name)
-```
-
 For QB Core:
 
-- Replace qb-management/client/cl_boss.lua for this: https://pastebin.com/9iuN9rSD
+_(small snippet [https://pastebin.com/E2PedQtn](https://pastebin.com/9iuN9rSD))_
+- All the changes are done in client/cl_boss.lua
+1. At the end of `RegisterNetEvent('qb-bossmenu:client:OpenMenu', function()` event, into bossMenu locale paste:
+    ```lua
+            {
+                header = "Employees Duty",
+                txt = "Shows Duty time of your employes",
+                icon = "fa-solid fa-sack-dollar",
+                params = {
+                    event = "qb-bossmenu:client:DutyTime",
+                }
+            },
+    ```
+
+2. At the end of the file add:
+    ```lua
+    RegisterNetEvent('qb-bossmenu:client:DutyTime', function()
+        TriggerServerEvent('sqz_duty:GetEmployes', PlayerJob.name)
+    end)
+    ```
+
+```mdx-code-block
+
+</TabItem>
+</Tabs>
+```
 
 ## Events used
 
@@ -113,7 +150,7 @@ For QB Core:
   <TabItem value="server config" label="server config" default>
 ```
 
-```js
+```lua
 SConfig = {}
 
 SConfig.Webhooks = { -- Webhooks for jobs to send daily report
@@ -151,7 +188,7 @@ Config.Items = { -- Those items and jobs will be affected when going on/off duty
 <TabItem value="shared config" label="shared config">
 ```
 
-```js
+```lua
 Config = {}
 
 
@@ -209,7 +246,7 @@ Config.SpecialJobs = { -- List of jobs that will go to other job
 <TabItem value="locales" label="locales" >
 ```
 
-````js
+````lua
 Locales['en'] = {
     ['loyalEmployee'] = 'No breaks, you have a loyal worker!',
     ['embedTitle'] = '**SQZ_DUTY: New Duty Report** %s',
@@ -258,7 +295,7 @@ Locales['cs'] = {
 <TabItem value="server_edit" label="server_edit" >
 ```
 
-```js
+```lua
 if SConfig.UsetxAdmin then
 
     AddEventHandler('txAdmin:events:scheduledRestart', function(eventData)
@@ -291,7 +328,7 @@ end
 
 ```
 
-```js
+```lua
 RegisterNetEvent('sqz_duty:ShowNotification', function(msg)
     ESX.ShowNotification(msg)
 end)

@@ -43,10 +43,10 @@ function Header() {
       <div>
         <h1 className="text-4xl md:text-6xl leading-[1.2] mb-7">
           <span>Hi, I'm </span>
-          <span className="text-[#d75a49]">Nikola</span>
+          <span className="text-[#d75a49]">Squizer</span>
           <span className="text-secondary">,</span>
           <br />
-          <span>Enjoy Using </span>
+          <span>Enjoy FiveM with </span>
           <span className="text-[#d75a49]">Codely</span>
           <span className="text-secondary">.</span>
         </h1>
@@ -70,22 +70,10 @@ function Header() {
 
 const PARTNERS_DATA = [
   {
-    title: "One",
-    img: "/img/instant-gaming.png",
-    link: "/",
-    description: "Games up to 70% off",
-  },
-  {
-    title: "Two",
-    img: "/img/instant-gaming.png",
-    link: "/",
-    description: "Games up to 70% off",
-  },
-  {
-    title: "Three",
-    img: "/img/instant-gaming.png",
-    link: "/",
-    description: "Games up to 70% off",
+    title: "UniversalGG",
+    img: "/img/universalgg.png",
+    link: "https://universalgg.com",
+    description: "High quality game server provider with DDoS protection from Path. 15% OFF with code: CODELY",
   },
 ];
 

@@ -69,14 +69,16 @@ Youtube Showcase</a>
 
 ## Installation
 
-1. Put `ensure cdl_motelsto` your start config and resource called `cdl_motels` into your resources folder
+1. Put `ensure codely_motel` your start config and resource called `codely_motel` into your resources folder
 2. Configure config.lua & locales.lua
 3. Run the provided SQL file (sql.sql)
-4. Add item `lockpick` to your `ox_inventory`
-5. Add item `motelkey` to your `ox_inventory`
-6. Add item `breakcharge` to your `ox_inventory` data (examples bellow) - Optional, this item name can be changed in config
-
-```js
+4. Add items to your inventory/database: (`lockpick`, `motelkey`, `breakcharge`)
+```mdx-code-block
+<Tabs>
+  <TabItem value="ox_inventory" label="OX Inventory">
+``` 
+- data/items.lua:
+```lua
 ['motelkey'] = {
     label = 'Motel Key',
     weight = 1,
@@ -105,8 +107,13 @@ Youtube Showcase</a>
     description = 'A police breach charge with 15 seconds timer'
 },
 ```
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+## Exports
 
-- `exports['codely_motel']:GenerateMotel(playerId, motelType, roomIndex)`
-
-  - motelType is motel index from your config (e.g. Pink Cage Motel)
-  - roomIndex is room type (e.g. Low end)
+1. Generate a new motel room for certain player
+    - `exports['codely_motel']:GenerateMotel(playerId, motelType, roomIndex)`
+        - motelType is motel index from your config (e.g. Pink Cage Motel)
+        - roomIndex is room type (e.g. Low end)

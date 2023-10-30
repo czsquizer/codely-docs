@@ -94,7 +94,7 @@ const config = {
         },
         items: [
           {
-            label: "Our Store",
+            label: "Tebex Store",
             href: "https://store.codely.store/",
             position: "left",
           },
@@ -145,7 +145,7 @@ const config = {
             title: "More",
             items: [
               {
-                label: "Our Store",
+                label: "Tebex Store",
                 href: "https://store.codely.store/",
               },
               {
@@ -160,6 +160,7 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
+        additionalLanguages: ['lua'],
       },
     }),
 };

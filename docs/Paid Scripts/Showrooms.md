@@ -79,7 +79,7 @@ Youtube Showcase</a>
 
   - In configs/server_edit.lua change the latest event for this one:
 
-    ```js
+    ```lua
     RegisterNetEvent('sqz_carshowroom:RequestCars', function()
         local xPlayer = ESX.GetPlayerFromId(source)
         if Config.JobsAllowedToDisplay[xPlayer.job.name] then

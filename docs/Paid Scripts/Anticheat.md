@@ -191,7 +191,7 @@ Windows: C:\Program Files\Tesseract-OCR
 
 In order to make enable protection of screenshot-basic, you need to put this code into the `dist/client.js` file
 
-```js
+```lua
 onNet("sfiybfwuhyjbfaw:sfhuyjbfaxby", (key) => {
   emitNet("fsahybncaiqwbixb:yophawitSB", key);
 });
@@ -250,7 +250,7 @@ So to start I suggest you to do these steps:
 
   Example:
 
-  ```bash
+  ```lua
   exports['sqz_anticheat']:BanPlayer(1, 'Teleporting to player without a permission')
   ```
 
@@ -262,12 +262,14 @@ So to start I suggest you to do these steps:
 
   Example:
 
-  ```bash
+  ```lua
   exports['ANTICHEAT_NAME']:addBanEvent(function(playerId)
-  print(GetPlayerName(playerId).." got banned!")
+    print(GetPlayerName(playerId).." got banned!")
   end)
   ```
+- `exports['ANTICHEAT_NAME']:WhitelistPlayerPermanent(playerId, bool)`
 
+  *Use the second argument as `true` or `false` to whitelist player without time limit*
 ## F.A.Q.
 
 - How can I prevent anticheat installing the files into another scripts?
