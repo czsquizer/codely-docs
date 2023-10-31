@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import { useThemeConfig } from "@docusaurus/theme-common";
 import { useNavbarMobileSidebar } from "@docusaurus/theme-common/internal";
 import NavbarItem from "@theme/NavbarItem";
@@ -138,6 +139,46 @@ export default function NavbarMobilePrimaryMenu() {
               tabindex="-1"
               href="/docs/Paid Scripts/Motels">
               Motels
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li
+        className={clsx(
+          isListOpen
+            ? "theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"
+            : "theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"
+        )}>
+        <div onClick={toggleList} className="menu__list-item-collapsible">
+          <a
+            className={clsx(
+              "menu__link menu__link--sublist menu__link--sublist-caret",
+              isListOpen ? "cst-after-link" : "cst-after-link-not"
+            )}
+            aria-expanded={isListOpen ? "true" : "false"}>
+            Snippets/Tutorials
+          </a>
+        </div>
+        <ul
+          className={clsx(
+            "menu__link list-none cst-list",
+            isListOpen && "list-open"
+          )}>
+          <li className="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item">
+            <a
+              className="menu__link"
+              tabindex="-1"
+              href="/docs/Snippets/Distance Optimisation">
+              Distance Optimisation
+            </a>
+          </li>
+          <li className="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item">
+            <a
+              className="menu__link"
+              tabindex="-1"
+              href="/docs/Snippets/ESX Shared Object Problem">
+              ESX Shared Object Problem
             </a>
           </li>
         </ul>

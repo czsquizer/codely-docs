@@ -130,6 +130,10 @@ const config = {
                 label: "Paid Scripts",
                 to: "/docs/intro",
               },
+              {
+                label: "Code Snippets/Tutorials",
+                to: "/docs/intro",
+              },
             ],
           },
           {
