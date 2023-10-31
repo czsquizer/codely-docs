@@ -11,7 +11,7 @@ const config = {
   favicon: "/favicon.ico",
 
   // Set the production url of your site here
-  url: "https://codely.store",
+  url: "https://docs.codely.store",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",
@@ -74,6 +74,11 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      metadata: [
+        {name: 'keywords', content: 'codely, docs, fivem optimalization, optimalization, fivem, sqz, squizer, sqz development, codely, codely scripts, cdl, cdl script, cdl fivem, lua script, free lua, free scripts, free fivem scripts'},
+        {name: 'description', context: 'Documentation for codely.store scripts'},
+        {name: 'Author', context: 'Squizer'}
+      ],
       colorMode: {
         defaultMode: "dark",
         disableSwitch: true,
