@@ -2,16 +2,14 @@
 sidebar_position: 2
 ---
 
-```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
-```
 
 :::info Introduction
 Script for creating jobs just by adding them to the config and database! Add your job now!
 
 :::
+
 
 ## Get it now!
 
@@ -97,11 +95,8 @@ You do **NOT NEED** to put the job into the `addon_inventory` or datastore table
 
 ## Config Files
 
-```mdx-code-block
-
 <Tabs>
   <TabItem value="Config (server)" label="Config (server)" default>
-```
 
 ```lua
 SConfig = {}
@@ -111,10 +106,8 @@ SConfig.Webhooks = {
 }
 ```
 
-```mdx-code-block
 </TabItem>
 <TabItem value="Config (client)" label="Config (client)">
-```
 
 ```lua
 Config                            = {}
@@ -455,10 +448,8 @@ Config.Jobs.sandy_mechanic = { -- This is name of job you have in your database,
 }
 ```
 
-```mdx-code-block
 </TabItem>
 <TabItem value="Loclaes" label="Loclaes">
-```
 
 ```lua
 Locales['en'] = {
@@ -716,10 +707,8 @@ Locales['cs'] = {
 }
 ```
 
-```mdx-code-block
 </TabItem>
   <TabItem value="client_edit" label="client_edit">
-```
 
 ```lua
 RegisterNetEvent('sqz_unijob:sendClientNotify')
@@ -753,10 +742,8 @@ RegisterKeyMapping('epressed', 'E pressed', 'keyboard', 'e')
 RegisterKeyMapping('jobactions', 'Job Actions', 'keyboard', 'f6')
 ```
 
-```mdx-code-block
 </TabItem>
 <TabItem value="server_edit" label="server_edit">
-```
 
 ```lua
 TriggerEvent('esx_phone:registerNumber', 'fib', _U('alert_fib'), true, true) -- Just in case you want to have the job in phone Deffault Contacts
@@ -786,10 +773,8 @@ AddEventHandler('sqz_unijob:Server:ShowNotification', function(playerId, message
 end)
 ```
 
-```mdx-code-block
 </TabItem>
 </Tabs>
-```
 
 ## Common Issues
 
@@ -800,11 +785,9 @@ end)
 - `attempt to call a nil value (field 'showNotification')` - Replace Notification event in the `server/edit.lua` to one provided bellow.
 - If search does not exist work, disable mythic probgress bar config option, because you do not use that script
 
-```mdx-code-block
 
 <Tabs>
   <TabItem value="CarryItem" label="CarryItem" default>
-```
 
 ```lua
 RegisterNetEvent('sqz_unijob:Server:CanPlayerCarryItem')
@@ -821,10 +804,8 @@ AddEventHandler('sqz_unijob:Server:CanPlayerCarryItem', function(callback, playe
 end)
 ```
 
-```mdx-code-block
 </TabItem>
 <TabItem value="notification" label="notification">
-```
 
 ```lua
 RegisterNetEvent('sqz_unijob:Server:ShowNotification')
@@ -835,8 +816,5 @@ AddEventHandler('sqz_unijob:Server:ShowNotification', function(playerId, message
 end)
 ```
 
-```mdx-code-block
-
 </TabItem>
 </Tabs>
-```

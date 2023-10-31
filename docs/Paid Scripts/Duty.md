@@ -140,7 +140,7 @@ _(small snippet [https://pastebin.com/E2PedQtn](https://pastebin.com/9iuN9rSD))_
 
 1. `TriggerServerEvent('sqz_duty:GetEmployes', ESX.PlayerData.job.name)` Event for opening boss menu with time of players. Make sure you provide the job which maches xPlayer.job.name on server
 2. `TriggerServerEvent('sqz_duty:ResetTime', identifier, ESX.PlayerData.job.name)` Event for reseting player time spent on server in the job, identifier should match targets xPlayer.identifier and the second argument is job name.
-3. `TriggerServerEvent('sqz_duty:ChangeJob')` Event for changing job (mainly off <=> non off and if you have special job in Config, it will count on it with it.)
+3. `TriggerServerEvent('sqz_duty:ChangeJob')` Event for changing job (mainly off to non off and if you have special job in Config, it will count on it with it.)
 
 ## Configs
 
