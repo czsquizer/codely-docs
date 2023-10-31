@@ -47,7 +47,7 @@ style={{
     width: 60,
     height: 60,
     borderRadius: 30,
-}} />Tabex Store</a>
+}} />Tebex Store</a>
 
 <a style={{
     display: "flex",

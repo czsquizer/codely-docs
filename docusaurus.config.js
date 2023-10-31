@@ -134,6 +134,10 @@ const config = {
                 label: "Code Snippets/Tutorials",
                 to: "/docs/intro",
               },
+              {
+                label: "Free Scripts",
+                to: "/docs/intro",
+              },
             ],
           },
           {
