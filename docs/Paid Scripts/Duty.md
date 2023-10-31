@@ -2,11 +2,8 @@
 sidebar_position: 5
 ---
 
-```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
-```
 
 :::info Introduction
 An Advanced duty system that allows you to check in via command/on certain places and tracks your time in-duty, boss of your society can review your time on-duty.
@@ -14,7 +11,6 @@ An Advanced duty system that allows you to check in via command/on certain place
 
 ## Get it now!
 
-```mdx-code-block
 <div
 style={{
     display: "flex",
@@ -24,48 +20,75 @@ style={{
 }}
 >
 
-<a style={{
+<a
+style={{
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "column",
-    margin: "0 12px"
-}} href="https://forum.cfx.re/t/release-sqz-duty-advanced-duty-script/3354791" target="_blank"> <img src="/img/fivem.png" alt="FIVEM ICON" style={{
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-}} />FiveM Post</a>
+    margin: "0 12px",
+  }}
+href="https://forum.cfx.re/t/release-sqz-duty-advanced-duty-script/3354791"
+target="\_blank">
+{" "}
+<img
+src="/img/fivem.png"
+alt="FIVEM ICON"
+style={{
+      width: 60,
+      height: 60,
+      borderRadius: 30,
+    }}
+/>
+FiveM Post
+</a>
 
-<a style={{
+<a
+style={{
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "column",
-    margin: "0 12px"
-}} href="https://sqz.tebex.io/package/4527068" target="_blank"> <img src="/img/tabex.webp" alt="TABEX ICON" style={{
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-}} />Tebex Store</a>
+    margin: "0 12px",
+  }}
+href="https://sqz.tebex.io/package/4527068"
+target="\_blank">
+{" "}
+<img
+src="/img/tabex.webp"
+alt="TABEX ICON"
+style={{
+      width: 60,
+      height: 60,
+      borderRadius: 30,
+    }}
+/>
+Tebex Store
+</a>
 
-<a style={{
+<a
+style={{
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "column",
-    margin: "0 12px"
-}} href="https://www.youtube.com/watch?v=zW2Qk9QjnRo" target="_blank">
-<img src="/img/ytb.webp" alt="YOUTUBE ICON" style={{
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-}} />
-Youtube Showcase</a>
+    margin: "0 12px",
+  }}
+href="https://www.youtube.com/watch?v=zW2Qk9QjnRo"
+target="\_blank">
+<img
+src="/img/ytb.webp"
+alt="YOUTUBE ICON"
+style={{
+      width: 60,
+      height: 60,
+      borderRadius: 30,
+    }}
+/>
+Youtube Showcase
+</a>
 
 </div>
-
-
-```
 
 ## Instalation
 
@@ -76,65 +99,67 @@ Youtube Showcase</a>
 ## Optional modifications
 
 1. To add the duty element to your boss menu:
-```mdx-code-block
+
 <Tabs>
   <TabItem value="ESX" label="ESX" default>
-```
 
 _(small snippet [https://pastebin.com/E2PedQtn](https://pastebin.com/E2PedQtn))_
+
 - All the changes are done in client/main.lua
-Change this:
-1. Replace n esx_society/client/main.lua:77 
-    ```lua
-    local elements = {}
-    ```
-    for
-    ```lua
-    local elements = {
-        {label = 'Show Duty Time of employees', value = 'dutyTime'}
-    }
-    ```
+  Change this:
+
+1. Replace n esx_society/client/main.lua:77
+
+   ```lua
+   local elements = {}
+   ```
+
+   for
+
+   ```lua
+   local elements = {
+       {label = 'Show Duty Time of employees', value = 'dutyTime'}
+   }
+   ```
 
 2. Add the part bellow to line 168 (the end of the if condition)
 
-    ```lua
-    elseif data.current.value == 'dutyTime' then
-        TriggerServerEvent('sqz_duty:GetEmployes', ESX.PlayerData.job.name)
-    ```
+   ```lua
+   elseif data.current.value == 'dutyTime' then
+       TriggerServerEvent('sqz_duty:GetEmployes', ESX.PlayerData.job.name)
+   ```
 
-
-```mdx-code-block
 </TabItem>
 <TabItem value="QBCore" label="QBCore">
-```
+
 For QB Core:
 
 _(small snippet [https://pastebin.com/E2PedQtn](https://pastebin.com/9iuN9rSD))_
+
 - All the changes are done in client/cl_boss.lua
+
 1. At the end of `RegisterNetEvent('qb-bossmenu:client:OpenMenu', function()` event, into bossMenu locale paste:
-    ```lua
-            {
-                header = "Employees Duty",
-                txt = "Shows Duty time of your employes",
-                icon = "fa-solid fa-sack-dollar",
-                params = {
-                    event = "qb-bossmenu:client:DutyTime",
-                }
-            },
-    ```
+
+   ```lua
+           {
+               header = "Employees Duty",
+               txt = "Shows Duty time of your employes",
+               icon = "fa-solid fa-sack-dollar",
+               params = {
+                   event = "qb-bossmenu:client:DutyTime",
+               }
+           },
+   ```
 
 2. At the end of the file add:
-    ```lua
-    RegisterNetEvent('qb-bossmenu:client:DutyTime', function()
-        TriggerServerEvent('sqz_duty:GetEmployes', PlayerJob.name)
-    end)
-    ```
-
-```mdx-code-block
+   ```lua
+   RegisterNetEvent('qb-bossmenu:client:DutyTime', function()
+       TriggerServerEvent('sqz_duty:GetEmployes', PlayerJob.name)
+   end)
+   ```
 
 </TabItem>
 </Tabs>
-```
 
 ## Events used
 
@@ -142,7 +167,7 @@ _(small snippet [https://pastebin.com/E2PedQtn](https://pastebin.com/9iuN9rSD))_
 2. `TriggerServerEvent('sqz_duty:ResetTime', identifier, ESX.PlayerData.job.name)` Event for reseting player time spent on server in the job, identifier should match targets xPlayer.identifier and the second argument is job name.
 3. `TriggerServerEvent('sqz_duty:ChangeJob')` Event for changing job (mainly off to non off and if you have special job in Config, it will count on it with it.)
 
-## Configs
+<!-- ## Configs
 
 ```mdx-code-block
 
@@ -346,7 +371,7 @@ end)
 ```mdx-code-block
 </TabItem>
 </Tabs>
-```
+``` -->
 
 ## Common issues
 
