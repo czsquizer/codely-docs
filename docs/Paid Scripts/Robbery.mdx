@@ -2,11 +2,8 @@
 sidebar_position: 6
 ---
 
-```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
-```
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 
 :::info Introduction
 Squizer's advanced robbery system that allows you to rob ATMs, Houses, Shops (2 types of vaults + cash registers), vangelico, set bodyguards do defend places & MUCH MORE!
@@ -14,7 +11,6 @@ Squizer's advanced robbery system that allows you to rob ATMs, Houses, Shops (2 
 
 ## Get it now!
 
-```mdx-code-block
 <div
 style={{
     display: "flex",
@@ -24,48 +20,79 @@ style={{
 }}
 >
 
-<a style={{
+<a
+  style={{
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "column",
-    margin: "0 12px"
-}} href="https://forum.cfx.re/t/release-sqz-robbery-advanced-robbery-script/4773035" target="_blank"> <img src="/img/fivem.png" alt="FIVEM ICON" style={{
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-}} />FiveM Post</a>
+    margin: "0 12px",
+  }}
+  href="https://forum.cfx.re/t/release-sqz-robbery-advanced-robbery-script/4773035"
+  target="_blank"
+>
+  {" "}
+  <img
+    src="/img/fivem.png"
+    alt="FIVEM ICON"
+    style={{
+      width: 60,
+      height: 60,
+      borderRadius: 30,
+    }}
+  />
+  FiveM Post
+</a>
 
-<a style={{
+<a
+  style={{
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "column",
-    margin: "0 12px"
-}} href="https://sqz.tebex.io/package/4728369" target="_blank"> <img src="/img/tabex.webp" alt="TABEX ICON" style={{
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-}} />Tebex Store</a>
+    margin: "0 12px",
+  }}
+  href="https://sqz.tebex.io/package/4728369"
+  target="_blank"
+>
+  {" "}
+  <img
+    src="/img/tabex.webp"
+    alt="TABEX ICON"
+    style={{
+      width: 60,
+      height: 60,
+      borderRadius: 30,
+    }}
+  />
+  Tebex Store
+</a>
 
-<a style={{
+<a
+  style={{
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "column",
-    margin: "0 12px"
-}} href="https://youtu.be/TRRBTv-zeuo" target="_blank">
-<img src="/img/ytb.webp" alt="YOUTUBE ICON" style={{
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-}} />
-Youtube Showcase</a>
+    margin: "0 12px",
+  }}
+  href="https://youtu.be/TRRBTv-zeuo"
+  target="_blank"
+>
+  <img
+    src="/img/ytb.webp"
+    alt="YOUTUBE ICON"
+    style={{
+      width: 60,
+      height: 60,
+      borderRadius: 30,
+    }}
+  />
+  Youtube Showcase
+</a>
 
 </div>
 
-
-```
 
 ## Instalation
 
@@ -79,15 +106,13 @@ Youtube Showcase</a>
 ## Dependencies
 - [mhacking](https://github.com/qbcore-framework/mhacking)
 - [utk_fingerprint & utk_hackdependency](https://github.com/utkuali/Finger-Print-Hacking-Game)
-- [progressBars](https://github.com/EthanPeacock/progressBars) *OPTIONAL: Can be replaced in client edit files*   
+- [progressBars](https://github.com/EthanPeacock/progressBars) *OPTIONAL: Can be replaced in client edit files*
 
 ## Config Files
 
-```mdx-code-block
 
 <Tabs>
   <TabItem value="config" label="config" default>
-```
 
 ```lua
 Config = {}
@@ -773,12 +798,10 @@ Config.Dispatch = {
         Notification = 'Someone is shooting in vangelico. I am worried the bodyguards will not be enough force to stop them.'
     },
 }
-```
+````
 
-```mdx-code-block
 </TabItem>
 <TabItem value="locales" label="locales">
-```
 
 ```lua
 Locales['en'] = {
@@ -823,10 +846,8 @@ Locales['en'] = {
 }
 ```
 
-```mdx-code-block
 </TabItem>
 <TabItem value="Client Edit File" label="Client Edit File">
-```
 
 ```lua
 if Config.ESXVersion == 'old' then
@@ -902,7 +923,7 @@ end
 function Draw3DText(x, y, z, text, lineCount)
 	local onScreen,_x,_y=World3dToScreen2d(x,y,z + 0.4)
 	local px,py,pz=table.unpack(GetGameplayCamCoords())
-	
+
 	SetTextScale(0.5, 0.35)
 	SetTextFont(4)
 	SetTextProportional(1)
@@ -980,98 +1001,98 @@ RegisterNetEvent('sqz_robbery:TransmitDispatch', function(type, coords)
         if type == 'vaults' then
             local data = exports['cd_dispatch']:GetPlayerInfo()
             TriggerServerEvent('cd_dispatch:AddNotification', {
-                job_table = {'police', 'sheriff'}, 
+                job_table = {'police', 'sheriff'},
                 coords = data.coords,
                 title = 'Store Robbery',
                 message = data.sex..' is robbing a store on the street  '..data.street,
                 flash = 0,
                 unique_id = tostring(math.random(0000000,9999999)),
                 blip = {
-                    sprite = 527, 
-                    scale = 0.9, 
+                    sprite = 527,
+                    scale = 0.9,
                     colour = 1,
-                    flashes = false, 
+                    flashes = false,
                     text = "911 - Store Robbery",
                     time = (5*60*1000),
                     sound = 1,
                 }
-            })	
+            })
         elseif type == 'cashRobberies' then
             local data = exports['cd_dispatch']:GetPlayerInfo()
             TriggerServerEvent('cd_dispatch:AddNotification', {
-                job_table = {'police', 'sheriff'}, 
+                job_table = {'police', 'sheriff'},
                 coords = data.coords,
                 title = 'Cash Register Stolen',
                 message = data.sex..' someone has stolen a cash register in the street '..data.street,
                 flash = 0,
                 unique_id = tostring(math.random(0000000,9999999)),
                 blip = {
-                    sprite = 497, 
-                    scale = 0.9, 
+                    sprite = 497,
+                    scale = 0.9,
                     colour = 1,
-                    flashes = false, 
+                    flashes = false,
                     text = "911 - Cash Register Stolen",
                     time = (5*60*1000),
                     sound = 1,
                 }
-            })	
+            })
         elseif type == 'houses' then
             local data = exports['cd_dispatch']:GetPlayerInfo()
             TriggerServerEvent('cd_dispatch:AddNotification', {
-                job_table = {'police', 'sheriff'}, 
+                job_table = {'police', 'sheriff'},
                 coords = data.coords,
                 title = 'House Burglary',
                 message = data.sex..' someone has breached to a hous on the street '..data.street,
                 flash = 0,
                 unique_id = tostring(math.random(0000000,9999999)),
                 blip = {
-                    sprite = 449231, 
-                    scale = 0.9, 
+                    sprite = 449231,
+                    scale = 0.9,
                     colour = 1,
-                    flashes = false, 
+                    flashes = false,
                     text = "House Burglary",
                     time = (5*60*1000),
                     sound = 1,
                 }
-            })	
+            })
         elseif type == 'atms' then
             local data = exports['cd_dispatch']:GetPlayerInfo()
             TriggerServerEvent('cd_dispatch:AddNotification', {
-                job_table = {'police', 'sheriff'}, 
+                job_table = {'police', 'sheriff'},
                 coords = data.coords,
                 title = 'ATM Software Failure',
                 message = 'The security systems of ATM on the street '..data.street.. ' have failed',
                 flash = 0,
                 unique_id = tostring(math.random(0000000,9999999)),
                 blip = {
-                    sprite = 521, 
-                    scale = 0.9, 
+                    sprite = 521,
+                    scale = 0.9,
                     colour = 1,
-                    flashes = false, 
+                    flashes = false,
                     text = "ATM software Failure",
                     time = (5*60*1000),
                     sound = 1,
                 }
-            })	
+            })
         elseif type == 'vangelico' then
             local data = exports['cd_dispatch']:GetPlayerInfo()
             TriggerServerEvent('cd_dispatch:AddNotification', {
-                job_table = {'police', 'sheriff'}, 
+                job_table = {'police', 'sheriff'},
                 coords = data.coords,
                 title = 'Jewelery Robbery',
                 message = data.sex..' is robbing a jewelery on the street '..data.street,
                 flash = 0,
                 unique_id = tostring(math.random(0000000,9999999)),
                 blip = {
-                    sprite = 617, 
-                    scale = 0.9, 
+                    sprite = 617,
+                    scale = 0.9,
                     colour = 1,
-                    flashes = false, 
+                    flashes = false,
                     text = "Jewelery Robbery",
                     time = (5*60*1000),
                     sound = 1,
                 }
-            })	
+            })
         end
     elseif GetResourceState('linden_outlawalert') == 'started' then
         local data = {dispatchCode = 'shooting', caller = 'Someone is robbing', coords = coords, netId = NetworkGetNetworkIdFromEntity(PlayerPedId()), length = 4000}
@@ -1107,9 +1128,9 @@ AddEventHandler('sqz_robbery:dispatch:BrodcastDispatch', function(type, coords, 
     EndTextCommandSetBlipName(blip)
 
     SetTimeout(dP.BlipTimeout, function()
-        
+
         RemoveBlip(blip)
-    
+
     end)
 end)
 
@@ -1197,9 +1218,5 @@ SetEntityCoords(bomba, Config.Vaults[index].BombAnimation.BombPos)
 SetEntityHeading(bomba, Config.Vaults[index].BombAnimation.Heading)]]
 ```
 
-
-```mdx-code-block
-
 </TabItem>
 </Tabs>
-```

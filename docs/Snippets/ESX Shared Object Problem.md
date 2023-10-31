@@ -2,12 +2,8 @@
 sidebar_position: 2
 ---
 
-```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
-```
-
 
 :::info Introduction
 A new es_extended version might be incompatible with some "old" scripts
@@ -20,72 +16,58 @@ A new es_extended version might be incompatible with some "old" scripts
 #### If you will follow these steps you will be fine
 
 1. Add `'@es_extended/imports.lua'` to fxmanifest.lua of your script into client_scripts/sever_scripts/shared_scripts variable
-  ```mdx-code-block
 
   <Tabs>
     <TabItem value="before" label="Before" default>
-  ```
 
-  ```lua
-  fx_version 'cerulean'
+```lua
+fx_version 'cerulean'
 
-  game 'gta5'
-  version '1.0.0'
-  lua54 'yes'
-  shared_scripts { '@es_extended/locale.lua', 'locales/*.lua', 'config.lua' }
-  server_scripts { '@oxmysql/lib/MySQL.lua', 'server/*.lua' }
-  client_scripts { 'client/*.lua' }
-  ```
+game 'gta5'
+version '1.0.0'
+lua54 'yes'
+shared_scripts { '@es_extended/locale.lua', 'locales/*.lua', 'config.lua' }
+server_scripts { '@oxmysql/lib/MySQL.lua', 'server/*.lua' }
+client_scripts { 'client/*.lua' }
+```
 
-  ```mdx-code-block
   </TabItem>
   <TabItem value="after" label="After">
-  ```
 
-  ```lua
-  fx_version 'cerulean'
-  game 'gta5'
-  version '1.0.0'
-  lua54 'yes'
-  shared_scripts { '@es_extended/imports.lua', '@es_extended/locale.lua', 'locales/*.lua', 'config.lua' }
-  server_scripts { '@oxmysql/lib/MySQL.lua', 'server/*.lua' }
-  client_scripts { 'client/*.lua' }
-  ```
+```lua
+fx_version 'cerulean'
+game 'gta5'
+version '1.0.0'
+lua54 'yes'
+shared_scripts { '@es_extended/imports.lua', '@es_extended/locale.lua', 'locales/*.lua', 'config.lua' }
+server_scripts { '@oxmysql/lib/MySQL.lua', 'server/*.lua' }
+client_scripts { 'client/*.lua' }
+```
 
-  ```mdx-code-block
   </TabItem>
   </Tabs>
-  ```
 2. Replace `getSharedObject` for export `es_extended['es_extended']:getSharedObject()` (works for both client & server side)
-  ```mdx-code-block
 
   <Tabs>
     <TabItem value="before" label="Before" default>
-  ```
 
-  ```lua
-  TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-  ```
+```lua
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+```
 
-  ```mdx-code-block
   </TabItem>
   <TabItem value="after" label="After">
-  ```
 
-  ```lua
-  ESX = exports['es_extended']:getSharedObject()
-  ```
+```lua
+ESX = exports['es_extended']:getSharedObject()
+```
 
-  ```mdx-code-block
   </TabItem>
   </Tabs>
-  ```
 3. (NOT RECOMMENDED, but works also) In es_extended/server/common.lua & es_extended/client/common.lua replace esx:getSharedEvent as described bellow
-  ```mdx-code-block
 
-  <Tabs>
-    <TabItem value="before" label="Before" default>
-  ```
+<Tabs>
+<TabItem value="before" label="Before" default>
 
   ```lua
   AddEventHandler("esx:getSharedObject", function()
@@ -94,10 +76,8 @@ A new es_extended version might be incompatible with some "old" scripts
   end)
   ```
 
-  ```mdx-code-block
-  </TabItem>
-  <TabItem value="after" label="After">
-  ```
+    </TabItem>
+    <TabItem value="after" label="After">
 
   ```lua
   AddEventHandler('esx:getSharedObject', function(cb)
@@ -105,7 +85,5 @@ A new es_extended version might be incompatible with some "old" scripts
   end)
   ```
 
-  ```mdx-code-block
-  </TabItem>
-  </Tabs>
-  ```
+</TabItem>
+</Tabs>

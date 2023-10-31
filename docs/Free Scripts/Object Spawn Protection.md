@@ -6,11 +6,8 @@ sidebar_position: 4
 Server side resource to prevent cheaters spamming random objects on your server
 :::
 
-
 ## Get it now!
 
-
-```mdx-code-block
 <div
 style={{
     display: "flex",
@@ -20,24 +17,19 @@ style={{
 }}
 >
 
-
 <a style={{
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "column",
     margin: "0 12px"
-}} href="https://github.com/czsquizer/sqz\_itemwhitelist" target="_blank"> <img src="/img/github.png" alt="GITHUB ICON" style={{
+}} href="https://github.com/czsquizer/sqz\_itemwhitelist" target="\_blank"> <img src="/img/github.png" alt="GITHUB ICON" style={{
     width: 60,
     height: 60,
     borderRadius: 30,
 }} />GitHub</a>
 
-
 </div>
-
-
-```
 
 ## Instalation:
 

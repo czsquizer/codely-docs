@@ -2,11 +2,8 @@
 sidebar_position: 3
 ---
 
-```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
-```
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 
 :::info Introduction
 Script for planting, harvesting, processing and selling drugs. Easy !
@@ -14,7 +11,6 @@ Script for planting, harvesting, processing and selling drugs. Easy !
 
 ## Get it now!
 
-```mdx-code-block
 <div
 style={{
     display: "flex",
@@ -24,48 +20,78 @@ style={{
 }}
 >
 
-<a style={{
+<a
+  style={{
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "column",
-    margin: "0 12px"
-}} href="https://forum.cfx.re/t/esx-sqz-unijob-advanced-system-for-easy-adding-jobs/2100467" target="_blank"> <img src="/img/fivem.png" alt="FIVEM ICON" style={{
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-}} />FiveM Post</a>
+    margin: "0 12px",
+  }}
+  href="https://forum.cfx.re/t/esx-sqz-unijob-advanced-system-for-easy-adding-jobs/2100467"
+  target="_blank"
+>
+  {" "}
+  <img
+    src="/img/fivem.png"
+    alt="FIVEM ICON"
+    style={{
+      width: 60,
+      height: 60,
+      borderRadius: 30,
+    }}
+  />
+  FiveM Post
+</a>
 
-<a style={{
+<a
+  style={{
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "column",
-    margin: "0 12px"
-}} href="https://sqz.tebex.io/package/4287812" target="_blank"> <img src="/img/tabex.webp" alt="TABEX ICON" style={{
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-}} />Tebex Store</a>
+    margin: "0 12px",
+  }}
+  href="https://sqz.tebex.io/package/4287812"
+  target="_blank"
+>
+  {" "}
+  <img
+    src="/img/tabex.webp"
+    alt="TABEX ICON"
+    style={{
+      width: 60,
+      height: 60,
+      borderRadius: 30,
+    }}
+  />
+  Tebex Store
+</a>
 
-<a style={{
+<a
+  style={{
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "column",
-    margin: "0 12px"
-}} href="https://youtu.be/QuDHKCbdMK4" target="_blank">
-<img src="/img/ytb.webp" alt="YOUTUBE ICON" style={{
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-}} />
-Youtube Showcase</a>
+    margin: "0 12px",
+  }}
+  href="https://youtu.be/QuDHKCbdMK4"
+  target="_blank"
+>
+  <img
+    src="/img/ytb.webp"
+    alt="YOUTUBE ICON"
+    style={{
+      width: 60,
+      height: 60,
+      borderRadius: 30,
+    }}
+  />
+  Youtube Showcase
+</a>
 
 </div>
-
-
-```
 
 ## Configuration
 
@@ -450,11 +476,8 @@ This is for selling items just by clicking items in the menu, there is one simpl
 
 ## Configs
 
-```mdx-code-block
-
 <Tabs>
   <TabItem value="client_edit" label="client_edit" default>
-```
 
 ```lua
 Citizen.CreateThread(function()
@@ -521,10 +544,8 @@ function Draw3DText(x, y, z, text)
 end
 ```
 
-```mdx-code-block
 </TabItem>
 <TabItem value="server_edit" label="server_edit">
-```
 
 ```lua
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end) -- Change the event if you are using any other event for getting ESX (if you have changed events for example)
@@ -601,11 +622,8 @@ AddEventHandler('sqz_drugs:sendDiscordNotification', function(playerId, body, he
 end)
 ```
 
-```mdx-code-block
-
 </TabItem>
 <TabItem value="config_c" label="config_c" >
-```
 
 ```lua
 Config = {}
@@ -1129,21 +1147,16 @@ Config.SimpleSellPoints = {
 Config.SellPointsString = "~INPUT_PICKUP~ Open Sell Point"
 ```
 
-```mdx-code-block
 </TabItem>
 <TabItem value="config_s" label="config_s" >
-```
 
 ```lua
 SConfig = {}
 SConfig.WebHookDiscord = "Discord_Webhook_URLS" -- The Discord webhook you want to send informations to, remove this line if you do not want to send informations to Discord
 ```
 
-```mdx-code-block
 </TabItem>
 <TabItem value="locales" label="locales" >
-
-```
 
 ```lua
 Locales['en'] = {
@@ -1303,21 +1316,16 @@ Locales['es'] = {
 }
 ```
 
-```mdx-code-block
 </TabItem>
 </Tabs>
-```
 
 ## Common errors
 
 - `nil ESX` it seems that you have changed events by anticheat so make sure to change them in your config files of the script -` attempt to call a nil value (field ‘canCarryItem’)` - most likely you are using old version of esx < 1.2. You need to change CanCarryItem function in server/edit.lua to the following
 - `attempt to call a nil value (field 'showNotification')` - Replace showNotification function for the one provided bellow
 
-```mdx-code-block
-
 <Tabs>
   <TabItem value="CarryItem" label="CarryItem" default>
-```
 
 ```lua
 function CanCarryItem(playerId, item, count)
@@ -1331,10 +1339,8 @@ function CanCarryItem(playerId, item, count)
 end
 ```
 
-```mdx-code-block
 </TabItem>
 <TabItem value="notification" label="notification">
-```
 
 ```lua
 function showNotification(playerId, message)
@@ -1344,8 +1350,5 @@ function showNotification(playerId, message)
 end
 ```
 
-```mdx-code-block
-
 </TabItem>
 </Tabs>
-```

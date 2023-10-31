@@ -2,12 +2,8 @@
 sidebar_position: 1
 ---
 
-```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
-```
-
 
 :::info Introduction
 A lot of resources drain your CPU usage by using "old" ways of checking distance between coords. The solution is easy!
@@ -27,11 +23,8 @@ How does that work? It is easy, just go 1 - 3, if you can not use 1., use the 2.
 
 This seems to be the biggest problem on most servers? Why? It is so f\*ckin' easy to optimise getting distance between 2 places.
 
-```mdx-code-block
-
 <Tabs>
   <TabItem value="heaviest" label="The Heaviest for CPU" default>
-```
 
 ```lua
 Citizen.CreateThread(function ()
@@ -52,10 +45,8 @@ end)
 -- It is incorrect, because "GetDistanceBetweenCoords" is "slow" in comparison with lua math
 ```
 
-```mdx-code-block
 </TabItem>
 <TabItem value="better_Way" label="Better way">
-```
 
 ```lua
 Citizen.CreateThread(function ()
@@ -76,10 +67,8 @@ end)
 -- But it is still not a lot optimised
 ```
 
-```mdx-code-block
 </TabItem>
 <TabItem value="best_way" label="The Best way">
-```
 
 ```lua
 Citizen.CreateThread(function ()
@@ -102,7 +91,5 @@ end)
 -- This should be way more optimized and run at 0.01ms without any performance impacts
 ```
 
-```mdx-code-block
 </TabItem>
 </Tabs>
-```
