@@ -1,7 +1,7 @@
 {
   "index_name": "prod_codely",
-  "sitemap_urls": ["https://codely-docs.vercel.app/sitemap.xml"],
-  "start_urls": ["https://codely-docs.vercel.app/"],
+  "sitemap_urls": ["https://docs.codely.store/sitemap.xml"],
+  "start_urls": ["https://docs.codely.store/"],
   "stop_urls": [],
 
   "sitemap_alternate_links": true,
