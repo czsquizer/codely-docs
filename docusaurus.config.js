@@ -99,7 +99,7 @@ const config = {
         appId: "OXDTAUQ7E8",
       },
       // Replace with your project's social card
-      image: "img/docusaurus-social-card.jpg",
+      image: "img/codely_social.png",
       navbar: {
         title: "",
 
