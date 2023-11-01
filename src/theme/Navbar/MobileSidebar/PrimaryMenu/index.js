@@ -157,6 +157,78 @@ export default function NavbarMobilePrimaryMenu() {
               isListOpen ? "cst-after-link" : "cst-after-link-not"
             )}
             aria-expanded={isListOpen ? "true" : "false"}>
+            Free Scripts
+          </a>
+        </div>
+        <ul
+          className={clsx(
+            "menu__link list-none cst-list",
+            isListOpen && "list-open"
+          )}>
+          <li className="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item">
+            <a
+              className="menu__link"
+              tabindex="-1"
+              href="/docs/Free Scripts/Carkeys">
+              Carkeys
+            </a>
+          </li>
+          <li className="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item">
+            <a
+              className="menu__link"
+              tabindex="-1"
+              href="/docs/Free Scripts/Carmenu">
+              Carmenu
+            </a>
+          </li>
+          <li className="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item">
+            <a
+              className="menu__link"
+              tabindex="-1"
+              href="/docs/Free Scripts/Hospital">
+              Hospital
+            </a>
+          </li>
+          <li className="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item">
+            <a
+              className="menu__link"
+              tabindex="-1"
+              href="/docs/Fee Scripts/Object Spawn Protection">
+              Object Spawn Protection
+            </a>
+          </li>
+          <li className="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item">
+            <a
+              className="menu__link"
+              tabindex="-1"
+              href="/docs/Free Scripts/Rental">
+              Rental
+            </a>
+          </li>
+          <li className="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item">
+            <a
+              className="menu__link"
+              tabindex="-1"
+              href="/docs/Free Scripts/Switchjob">
+              Switchjob
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li
+        className={clsx(
+          isListOpen
+            ? "theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"
+            : "theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"
+        )}>
+        <div onClick={toggleList} className="menu__list-item-collapsible">
+          <a
+            className={clsx(
+              "menu__link menu__link--sublist menu__link--sublist-caret",
+              isListOpen ? "cst-after-link" : "cst-after-link-not"
+            )}
+            aria-expanded={isListOpen ? "true" : "false"}>
             Snippets/Tutorials
           </a>
         </div>
