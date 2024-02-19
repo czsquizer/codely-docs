@@ -229,7 +229,7 @@ export default function NavbarMobilePrimaryMenu() {
               isListOpen ? "cst-after-link" : "cst-after-link-not"
             )}
             aria-expanded={isListOpen ? "true" : "false"}>
-            Snippets/Tutorials
+            Snippets
           </a>
         </div>
         <ul
@@ -251,6 +251,38 @@ export default function NavbarMobilePrimaryMenu() {
               tabindex="-1"
               href="/docs/Snippets/ESX Shared Object Problem">
               ESX Shared Object Problem
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li
+        className={clsx(
+          isListOpen
+            ? "theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"
+            : "theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"
+        )}>
+        <div onClick={toggleList} className="menu__list-item-collapsible">
+          <a
+            className={clsx(
+              "menu__link menu__link--sublist menu__link--sublist-caret",
+              isListOpen ? "cst-after-link" : "cst-after-link-not"
+            )}
+            aria-expanded={isListOpen ? "true" : "false"}>
+            Tutorials
+          </a>
+        </div>
+        <ul
+          className={clsx(
+            "menu__link list-none cst-list",
+            isListOpen && "list-open"
+          )}>
+          <li className="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item">
+            <a
+              className="menu__link"
+              tabindex="-1"
+              href="/docs/Tutorials/External Voice Server">
+              External Voice Server
             </a>
           </li>
         </ul>

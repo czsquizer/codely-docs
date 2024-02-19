@@ -124,6 +124,11 @@ const config = {
             label: "Docs",
           },
           {
+            to: "https://universalgg.com",
+            position: "left",
+            label: "Cheap VPS hosting",
+          },
+          {
             href: "https://discord.gg/6ZUwSyUnbq",
             label: "Discord",
             position: "right",
@@ -143,15 +148,19 @@ const config = {
             items: [
               {
                 label: "Paid Scripts",
-                to: "/docs/intro",
+                to: "/docs/Paid%20Scripts/Unijob",
               },
               {
-                label: "Code Snippets/Tutorials",
-                to: "/docs/intro",
+                label: "Snippets",
+                to: "/docs/Snippets/Distance%20Optimisation",
+              },
+              {
+                label: "Tutorials",
+                to: "/docs/Tutorials/External%20Voice%20Server",
               },
               {
                 label: "Free Scripts",
-                to: "/docs/intro",
+                to: "/docs/Free%20Scripts/Carkeys",
               },
             ],
           },
