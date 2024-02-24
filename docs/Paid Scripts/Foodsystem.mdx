@@ -1,0 +1,192 @@
+---
+sidebar_position: 8
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+:::info Introduction
+Are you tired of lackluster food systems in your FiveM server? Say goodbye to bland and boring meal mechanics and say hello to the next level of immersive gameplay! Our unique Food System script revolutionizes the dining experience in your virtual world, offering a plethora of features that will keep your players engaged and craving for more.
+
+:::
+
+## Get it now!
+
+<div
+style={{
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "row"
+}}
+>
+
+<a
+  style={{
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "column",
+    margin: "0 12px",
+  }}
+  href="https://forum.cfx.re/t/esx-sqz-unijob-advanced-system-for-easy-adding-jobs/2100467"
+  target="_blank"
+>
+  {" "}
+  <img
+    src="/img/fivem.png"
+    alt="FIVEM ICON"
+    style={{
+      width: 60,
+      height: 60,
+      borderRadius: 30,
+    }}
+  />
+  FiveM Post
+</a>
+
+<a
+  style={{
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "column",
+    margin: "0 12px",
+  }}
+  href="https://store.codely.store/package/6147068"
+  target="_blank"
+>
+  {" "}
+  <img
+    src="/img/tabex.webp"
+    alt="TABEX ICON"
+    style={{
+      width: 60,
+      height: 60,
+      borderRadius: 30,
+    }}
+  />
+  Tebex Store
+</a>
+
+</div>
+
+## Installation
+
+1. Put `ensure sqz_unijob` to your server.cfg _(or any start cfg file)_ and put the resource named `sqz_foodsystem` -_maybe you will have to rename it_- into your `resources` folder.
+2. Download dependencies: (ox_lib)[https://github.com/overextended/ox_lib/releases], (ox_target)[https://github.com/overextended/ox_target/releases]
+3. Insert new animations to your emotes menu:
+
+## Creating a new job
+
+1. Put the job to the `jobs` & `job_grades` to your database as usual
+2. Insert the society to the `addon_account` to your database in format: `society_jobname`
+3. Duplicate the whole table `Config.Jobs.sandy_mechanic` , change the `sandy_mechanic` to your job name and configure its properties
+
+<Tabs>
+<TabItem value="bk_emotes" label="bk_emotes">
+- Into bk_emotes/Client/AnimationList.lua , DP.PropEmotes table insert:
+```lua
+["carryplates"] = {"anim@heists@box_carry@", "idle", "Carry Plates", AnimationOptions =
+{
+    Prop = "prop_cs_plate_01",
+    PropBone = 60309,
+    PropPlacement = {0.09, -0.04, 0.11, -100.0, 40.0, 40.0},
+    SecondProp = 'prop_cs_plate_01',
+    SecondPropBone = 57005,
+    SecondPropPlacement = {0.18, -0.01, -0.11, -110.0, -10.0, 30.0},
+    EmoteLoop = true,
+    EmoteMoving = true,
+}},
+["carrydrinks"] = {"anim@heists@humane_labs@finale@keycards", "ped_a_enter_loop", "Carry Drinks", AnimationOptions =
+{
+    Prop = 'v_ret_247_popcan2',
+    PropBone = 18905,
+    PropPlacement = {0.12, 0.12, -0.02, -104.0, 27.0, -19.0},
+    EmoteMoving = true,
+    EmoteLoop = true
+}},
+```
+</TabItem>
+<TabItem value="dpemotes" label="dpemotes">
+- Into dpemotes/Client/AnimationList.lua , DP.PropEmotes table insert:
+```lua
+["carryplates"] = {"anim@heists@box_carry@", "idle", "Carry Plates", AnimationOptions =
+{
+    Prop = "prop_cs_plate_01",
+    PropBone = 60309,
+    PropPlacement = {0.09, -0.04, 0.11, -100.0, 40.0, 40.0},
+    SecondProp = 'prop_cs_plate_01',
+    SecondPropBone = 57005,
+    SecondPropPlacement = {0.18, -0.01, -0.11, -110.0, -10.0, 30.0},
+    EmoteLoop = true,
+    EmoteMoving = true,
+}},
+["carrydrinks"] = {"anim@heists@humane_labs@finale@keycards", "ped_a_enter_loop", "Carry Drinks", AnimationOptions =
+{
+    Prop = 'v_ret_247_popcan2',
+    PropBone = 18905,
+    PropPlacement = {0.12, 0.12, -0.02, -104.0, 27.0, -19.0},
+    EmoteMoving = true,
+    EmoteLoop = true
+}},
+```
+</TabItem>
+<TabItem value="scully_emotemenu" label="scully_emotemenu">
+- Into scully_emotemenu/animations/prop_emotes.lua table insert:
+```lua
+{
+    Label = 'Carry Plates',
+    Command = 'carryplates',
+    Animation = 'idle',
+    Dictionary = 'anim@heists@box_carry@',
+    Options = {
+        Flags = {
+            Loop = true,
+            Move = true,
+        },
+        Props = {
+            {
+                Bone = 60309,
+                Name = 'prop_cs_plate_01',
+                Placement = {
+                    vec3(0.09, -0.04, 0.11),
+                    vec3(-100.0, 40.0, 40.0)
+                },
+            },
+            {
+                Bone = 57005,
+                Name = 'prop_cs_plate_01',
+                Placement = {
+                    vec3(0.18, -0.01, -0.11),
+                    vec3(-110.0, -10.0, 30.0)
+                },
+            },
+        },
+    },
+},
+{
+    Label = 'Carry Drinks',
+    Command = 'carrydrinks',
+    Animation = 'ped_a_enter_loop',
+    Dictionary = 'anim@heists@humane_labs@finale@keycards',
+    Options = {
+        Flags = {
+            Loop = true,
+            Move = true,
+        },
+        Props = {
+            {
+                Bone = 18905,
+                Name = 'v_ret_247_popcan2',
+                Placement = {
+                    vec3(0.12, 0.12, -0.02),
+                    vec3(-104.0, 27.0, -19.0)
+                },
+            },
+        },
+    },
+},
+```
+</TabItem>
+</Tabs>
