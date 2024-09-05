@@ -184,3 +184,43 @@ style={{
 ```
 </TabItem>
 </Tabs>
+4. Remove esx_basicneeds script from your server (now food part is handled by this script) or remove at least from client/main.lua this part:
+```lua
+AddEventHandler('esx_status:loaded', function(status)
+    TriggerEvent('esx_status:registerStatus', 'hunger', 1000000, '#CFAD0F', function(status)
+        return Config.Visible
+    end, function(status)
+        status.remove(100)
+    end)
+
+    TriggerEvent('esx_status:registerStatus', 'thirst', 1000000, '#0C98F1', function(status)
+        return Config.Visible
+    end, function(status)
+        status.remove(75)
+    end)
+end)
+
+AddEventHandler('esx_status:onTick', function(data)
+    local playerPed  = PlayerPedId()
+    local prevHealth = GetEntityHealth(playerPed)
+    local health     = prevHealth
+    
+    for k, v in pairs(data) do
+        if v.name == 'hunger' and v.percent == 0 then
+            if prevHealth <= 150 then
+                health = health - 5
+            else
+                health = health - 1
+            end
+        elseif v.name == 'thirst' and v.percent == 0 then
+            if prevHealth <= 150 then
+                health = health - 5
+            else
+                health = health - 1
+            end
+        end
+    end
+    
+    if health ~= prevHealth then SetEntityHealth(playerPed, health) end
+end)
+```
