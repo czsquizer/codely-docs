@@ -124,9 +124,9 @@ const config = {
             label: "Docs",
           },
           {
-            to: "https://universalgg.com",
+            to: "https://fusiora.com",
             position: "left",
-            label: "Cheap VPS hosting",
+            label: "Recommended VPS hosting",
           },
           {
             href: "https://discord.gg/6ZUwSyUnbq",
