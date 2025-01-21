@@ -97,7 +97,6 @@ style={{
 - Night vision detection
 - See trough materials detection
 - Blacklisted weapons detection
-- Noclip detection
 - Detection of fishy names
 - Event protection
   - Set max value of events triggered
@@ -117,6 +116,11 @@ style={{
 - Infinite ammo detection
 - Noclip detection
 - Weapon damage modifier detection
+- Give Weapon detection (working only with ox_inventory)
+
+:::caution Attention
+The OCR does not work with Game Servers. You should avoid using "FiveM Game Hosting" providers, more info in [https://fivem.net/terms](FiveM ToS)
+:::
 
 :::caution Attention
 I suggesting you going through the docs and configs very carefully, if you do not configure the anticheat properly, it might cause some false positive detections.
@@ -179,9 +183,9 @@ The OCR is not needed. If you want to still use photos, you can just use a Disco
 
 If you are not sure how, there is a video for you: https://www.youtube.com/watch?v=CKXaNSPfr44
 
-:::info
+:::tip
 
-In both version, change to token to match the anticheat's token. It is a security things, I suggest changing it. It does not matter what it is.
+In sqz_anticheat, sqz_heartbeat & ocr_python/app.py you should change Token. It should be a random set of characters/letters. Do not put there your Discord Bot token!
 
 :::
 

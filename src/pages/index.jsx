@@ -70,10 +70,10 @@ function Header() {
 
 const PARTNERS_DATA = [
   {
-    title: "UniversalGG",
-    img: "/img/universalgg.png",
-    link: "https://universalgg.com",
-    description: "High quality game server provider with DDoS protection from Path. 15% OFF with code: CODELY",
+    title: "Fusiora.com",
+    img: "/img/fusiora.png",
+    link: "https://fusiora.com",
+    description: "High quality (game) server provider with DDoS protection. 11% OFF with code: CODELY",
   },
 ];
 
