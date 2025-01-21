@@ -1,7 +1,7 @@
 {
-  "index_name": "prod_codely",
-  "sitemap_urls": ["https://docs.codely.store/sitemap.xml"],
-  "start_urls": ["https://docs.codely.store/"],
+  "index_name": "prod_sqz_scripts",
+  "sitemap_urls": ["https://docs.squizer.cz/sitemap.xml"],
+  "start_urls": ["https://docs.squizer.cz/"],
   "stop_urls": [],
 
   "sitemap_alternate_links": true,

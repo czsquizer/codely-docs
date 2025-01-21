@@ -9,7 +9,7 @@ Welcome on this page, you can find here some useful tutorials and useful informa
 
 ## Purschasing
 
-You can purschase our scripts on [Tebex store](https://store.codely.store/). After purschasing the script, you should see an option to download the script in your keymaster.
+You can purschase our scripts on [Tebex store](https://store.squizer.cz/). After purschasing the script, you should see an option to download the script in your keymaster.
 To get the script you must do following:
 
 1. Buy the script on my Tebex store

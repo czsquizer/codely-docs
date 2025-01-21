@@ -7,20 +7,20 @@ const darkCodeTheme = themes.dracula;
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Codely",
+  title: "SQZ Scripts",
   tagline: "",
   favicon: "/favicon.ico",
 
   // Set the production url of your site here
-  url: "https://docs.codely.store",
+  url: "https://docs.squizer.cz",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: "codely", // Usually your GitHub org/user name.
-  projectName: "codely-docs", // Usually your repo name.
+  organizationName: "sqz_scripts", // Usually your GitHub org/user name.
+  projectName: "sqz_scripts-docs", // Usually your repo name.
 
   onBrokenLinks: "ignore",
   onBrokenMarkdownLinks: "ignore",
@@ -85,8 +85,8 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       metadata: [
-        {name: 'keywords', content: 'codely, docs, fivem optimalization, optimalization, fivem, sqz, squizer, sqz development, codely, codely scripts, cdl, cdl script, cdl fivem, lua script, free lua, free scripts, free fivem scripts'},
-        {name: 'description', context: 'Documentation for codely.store scripts'},
+        {name: 'keywords', content: 'docs, fivem optimalization, optimalization, fivem, sqz, squizer, sqz development, sqz, squizer scripts, cdl, cdl script, cdl fivem, lua script, free lua, free scripts, free fivem scripts'},
+        {name: 'description', context: 'Documentation for squizer.cz scripts'},
         {name: 'Author', context: 'Squizer'}
       ],
       colorMode: {
@@ -95,22 +95,22 @@ const config = {
       },
       algolia: {
         apiKey: "650c352d884796c701e147e6c1ab908a",
-        indexName: "prod_codely",
+        indexName: "prod_sqz_scripts",
         appId: "OXDTAUQ7E8",
       },
       // Replace with your project's social card
-      image: "img/codely_social.png",
+      image: "img/1024x1024.png",
       navbar: {
         title: "",
 
         logo: {
-          alt: "Codely Logo",
+          alt: "SQZ Sscripts Logo",
           src: "/favicon.ico",
         },
         items: [
           {
             label: "Tebex Store",
-            href: "https://store.codely.store/",
+            href: "https://store.squizer.cz/",
             position: "left",
           },
           {
@@ -178,7 +178,7 @@ const config = {
             items: [
               {
                 label: "Tebex Store",
-                href: "https://store.codely.store/",
+                href: "https://store.squizer.cz/",
               },
               {
                 label: "Main Page",
@@ -187,7 +187,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Codely, Inc.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Squizer.`,
       },
       prism: {
         theme: lightCodeTheme,

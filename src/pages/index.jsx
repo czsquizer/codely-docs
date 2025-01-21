@@ -47,7 +47,7 @@ function Header() {
           <span className="text-secondary">,</span>
           <br />
           <span>Enjoy FiveM with </span>
-          <span className="text-[#d75a49]">Codely</span>
+          <span className="text-[#d75a49]">SQZ Scripts</span>
           <span className="text-secondary">.</span>
         </h1>
         <div className="md:flex hidden">
@@ -73,7 +73,7 @@ const PARTNERS_DATA = [
     title: "Fusiora.com",
     img: "/img/fusiora.png",
     link: "https://fusiora.com",
-    description: "High quality (game) server provider with DDoS protection. 11% OFF with code: CODELY",
+    description: "High quality (game) server provider with DDoS protection. 11% OFF with code: SQZ",
   },
 ];
 
