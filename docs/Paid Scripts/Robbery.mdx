@@ -111,6 +111,7 @@ style={{
 ## If you are using ps-dispatch
 - If you are using ps-dispatch, follow these steps
 1. Insert these values at the end of Config.Blips table in ps-dispatch/shared/config.lua (by default on line 446)
+
 ```lua
     ['vaultrobbery'] = {
         radius = 2.0,
@@ -144,19 +145,19 @@ style={{
         sound2 = 'GTAO_FM_Events_Soundset',
         offset = true,
         flash = false
-    },```
+    },
+```
 2. Insert these values into ps-dispatch/fxmanifest.lua at the bottom of the file
 ```lua
 client_exports {
   'GetPlayerGender',
   'GetStreetAndZone'
-}```
+}
+```
 
 ### ps-dispatch example files:
 <Tabs>
-    <TabItem value="none" label="none">
-    </TabItem>
-  <TabItem value="ps-dispatched/shared/config.lua" label="ps-dispatched/shared/config.lua" default>
+  <TabItem value="ps-dispatched/shared/config.lua" label="ps-dispatched/shared/config.lua">
 
 ```lua
 Config = Config or {}
@@ -776,6 +777,43 @@ Config.Colors = {
 <TabItem value="fxmanifest.lua" label="fxmanifest.lua">
 
 ```lua
+fx_version 'cerulean'
+
+game "gta5"
+
+author "Project Sloth & OK1ez"
+version '2.2.1'
+
+lua54 'yes'
+
+ui_page 'html/index.html'
+-- ui_page 'http://localhost:5173/' --for dev
+
+client_script {
+  '@PolyZone/client.lua',
+  '@PolyZone/CircleZone.lua',
+  '@PolyZone/BoxZone.lua',
+  'client/**',
+}
+server_script {
+  "server/**",
+}
+shared_script {
+  "shared/**",
+  '@ox_lib/init.lua',
+}
+
+files {
+  'html/**',
+  'locales/*.json',
+}
+
+client_exports {
+  'GetPlayerGender',
+  'GetStreetAndZone'
+}
+
+ox_lib 'locale' -- v3.8.0 or above
 ```
 
 </TabItem>
@@ -1894,3 +1932,4 @@ SetEntityHeading(bomba, Config.Vaults[index].BombAnimation.Heading)]]
 
 </TabItem>
 </Tabs>
+
