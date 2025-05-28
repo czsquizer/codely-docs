@@ -69,12 +69,6 @@ function Header() {
 }
 
 const PARTNERS_DATA = [
-  {
-    title: "Fusiora.com",
-    img: "/img/fusiora.png",
-    link: "https://fusiora.com",
-    description: "High quality (game) server provider with DDoS protection. 11% OFF with code: SQZ",
-  },
 ];
 
 function Partners() {

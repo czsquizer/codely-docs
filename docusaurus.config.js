@@ -124,11 +124,6 @@ const config = {
             label: "Docs",
           },
           {
-            to: "https://fusiora.com",
-            position: "left",
-            label: "Recommended VPS hosting",
-          },
-          {
             href: "https://discord.gg/6ZUwSyUnbq",
             label: "Discord",
             position: "right",
